@@ -1,0 +1,202 @@
+" Use the OS clipboard by default
+set clipboard=unnamed,unnamedplus
+
+" Set scrolloff 7 lines to the cursor - when moving vertically using j/k
+set scrolloff=7
+
+" the ":substitute" flag 'g' is by default
+set gdefault
+
+" print the line number in front of each line
+set number
+
+" show the line number relative to the line with the cursor
+set relativenumber
+
+" Ignore case when searching
+set noignorecase
+
+" When searching try to be smart about cases
+set smartcase
+
+" Highlight search results
+set hlsearch
+
+" Makes search act like search in modern browsers
+set incsearch
+
+" Show matching brackets when text indicator is over them
+set showmatch
+
+" use visual bell instead of beeping
+set visualbell
+set tm=500
+
+
+" Don't use Ex mode, use Q for formatting.
+map Q gq
+
+" message on the status line to show current mode
+set showmode
+
+" show (partial) command in the status bar
+set showcmd
+
+let mapleader = " "
+inoremap jj <esc>
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" IdeaVim Only Setting
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Enable native idea paste action for put operations
+set clipboard+=ideaput
+set ideajoin
+set idearefactormode=keep
+
+"" Set Handlers
+sethandler a:vim
+sethandler <C-A> a:ide  " select all
+sethandler <C-C> a:ide  " copy
+sethandler <C-V> a:ide  " paste
+sethandler <C-F> a:ide  " find
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Plugins
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""" build in plugins ----------------------------------------
+Plug 'preservim/nerdtree'
+Plug 'machakann/vim-highlightedyank'
+Plug 'tpope/vim-surround'
+
+""" external plugins(install required) ------------------------
+Plug 'easymotion/vim-easymotion'
+set which-key
+set keep-english-in-normal
+""" Plugin Settings: NERDTree ---------------------------------
+" Focus project window
+noremap <C-S-e> :NERDTreeFocus <CR>
+
+""" Plugin Settings: easymotion -------------------------------
+map <leader><leader>s <Plug>(easymotion-s)
+map <leader><leader>f <Plug>(easymotion-f)
+map <leader><leader>F <Plug>(easymotion-F)
+map <leader><leader>w <Plug>(easymotion-w)
+
+""" Plugin Settings: Which Key Config -------------------------
+set notimeout
+" increase the timeoutlen (default: 1000), don't add space around the equal sign =
+set timeoutlen=5000
+
+" show vim actions
+let g:WhichKey_ShowVimActions = "true"
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Actions
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"""""""""""""""""""""""""""""""""""""Buffer,Tab,Window""""""""""""""""""""""""""""""""""""""
+" window
+map <C-m> <Action>(HideAllWindows)
+
+""""""""""""""""""""""""""""""""""""""Search(s)""""""""""""""""""""""""""""""""""""""
+let g:WhichKeyDesc_search = "<leader>s Search"
+map <leader>su <Action>(FindUsages)
+map <leader>sf <Action>(Find)
+map <leader>sF <Action>(FindInPath)
+map <leader>sr <Action>(Replace)
+map <leader>sR <Action>(ReplaceInPath)
+map <leader>ss <Action>(SelectNextOccurrence)
+
+""""""""""""""""""""""""""""""""""""""Refactoring(r)""""""""""""""""""""""""""""""""""""""
+let g:WhichKeyDesc_refactory = "<leader>r Refactory"
+map <leader>rr <Action>(Refactorings.QuickListPopupAction)
+map <leader>ra <Action>(ShowIntentionActions)
+map <leader>rn <Action>(RenameElement)
+map <leader>rm <Action>(ExtractMethod)
+map <leader>ri <Action>(Inline)
+map <leader>rv <Action>(IntroduceVariable)
+map <leader>rc <Action>(IntroduceConstant)
+map <leader>rp <Action>(IntroduceParameter)
+map <leader>rf <Action>(IntroduceField)
+
+""""""""""""""""""""""""""""""""""""""Debug(d)""""""""""""""""""""""""""""""""""""""
+let g:WhichKeyDesc_debug = "<leader>d Debug"
+map <leader>dd <Action>(Debug)
+map <leader>dt <Action>(ToggleLineBreakpoint)
+map <leader>ds <Action>(Stop)
+map <leader>dw <Action>(Debugger.AddToWatch)
+map <leader>di <Action>(Debugger.AddInlineWatch)
+
+map <C-j> <Action>(StepOver)
+map <C-k> <Action>(Resume)
+map <C-h> <Action>(StepOut)
+map <C-l> <Action>(ForceStepInto)
+map <C-c> <Action>(ForceRunToCursor)
+
+map <C-b> <Action>(CompileDirty)
+imap <C-b> <Action>(CompileDirty)
+
+
+""""""""""""""""""""""""""""""""""""""Code(c)""""""""""""""""""""""""""""""""""""""
+let g:WhichKeyDesc_code = "<leader>c Code"
+map <leader>cf <Action>(ReformatCode)
+let g:WhichKeyDesc_language_reformat = "<leader>cf Format"
+map <leader>co <Action>(OptimizeImports)
+map <leader>cg <Action>(Generate)
+map <leader>cp <Action>(ParameterInfo)
+
+" Show hover doc
+map <leader>ch <Action>(ShowErrorDescription)
+
+" Keep visual selection
+vnoremap < <gv
+vnoremap > >gv
+
+""""""""""""""""""""""""""""""""""""""Navigation(n)""""""""""""""""""""""""""""""""""""""
+let g:WhichKeyDesc_navigation = "<leader>n Navigation"
+map <leader>ni <Action>(GotoImplementation)
+map <leader>ns <Action>(GotoSuperMethod)
+map <leader>ng <Action>(JumpToLastChange)
+map <leader>nh <Action>(TypeHierarchy)
+map <leader>nf <Action>(FileStructurePopup)
+
+""""""""""""""""""""""""""""""""""""""Tools""""""""""""""""""""""""""""""""""""""
+
+" Terminal
+map <C-S-t> <action>(ActivateTerminalToolWindow)
+map <C-S-d> <action>(ActivateDebugToolWindow)
+
+
+""""""""""""""""""""""""""""""""""""""DEPRECATED""""""""""""""""""""""""""""""""""""""
+" Tab navigation
+
+"map <Tab> <Action>(NextTab)                        " use gt instead
+"map <S-Tab> <Action>(PreviousTab)                  " use gT instead
+"map <leader>q <Action>(CloseContent)               " use :q
+"map <leader>Q <Action>(CloseAllEditors)            " use :tabo
+
+" Alt+j/k for autocompletion popup
+"inoremap <A-j> <C-n>                               " use <UP>
+"inoremap <A-k> <C-p>                               " use <DOWN>
+
+""""""""""""""""""""""""""""""""""""""TBD""""""""""""""""""""""""""""""""""""""
+"map H <Action>(ShowErrorDescription)
+"map <leader><leader> <Action>(SearchEverywhere)
+
+" Zen mode
+"map <leader>zz <Action>(TogglePresentationMode)
+
+" nnoremap ,s :action FileStructurePopup<CR>
+" nnoremap gb :action JumpToLastChange<CR>
+" ToolWindowsGroup
+
+" Popup navigation
+map <A-j> <Action>(PopupMenu-selectnext)
+map <A-k> <Action>(PopupMenu-selectprev)
+
+"map <C-S-s> <Action>(Console.Jdbc.Execute)
+
+" !!not works!!
+"map <C-S-c> <Action>(ConsoleView.ClearAll)
+
+imap <C-n> <Action>(GotoNextError)
