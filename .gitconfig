@@ -1,0 +1,12 @@
+[user]
+	email = kent.cwg@gmail.com
+	name = Kent Chiu
+
+
+[alias]
+	st = status
+    	ci = commit
+    	co = checkout
+	br = branch	
+[core]
+	editor = vim
