@@ -7,7 +7,8 @@
 - git
 - zsh
 - oh-my-zsh
-- idea + vimplugin
+- powerlevel10k
+- idea + vim plugin
 - lazgit
 - delta (diff tools)
 
@@ -33,8 +34,6 @@ Open powershell with administrator privileges
 ```powershell
 New-Item -ItemType SymbolicLink -Path "$env:userprofile\.gitconfig" -Target "$env:userprofile\dev\dotfile\.gitconfig" -Force
 New-Item -ItemType SymbolicLink -Path "$env:userprofile\.ideavimrc" -Target "$env:userprofile\dev\dotfile\.ideavimrc" -Force
-
-
 ```
 
 
