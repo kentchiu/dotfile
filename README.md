@@ -1,17 +1,29 @@
 # dotfile
 
+
+## pre-installed
+
+- tmux + tpm plugin
+- git
+- zsh
+- oh-my-zsh
+- idea + vimplugin
+- lazgit
+- delta (diff tools)
+
 ## usage
 
+> NOTE: BACKUP all of those file before `ln` command 
 
 linux/maxos
 
 ```bash
-ln -sf ~/dev/kent/dotfile/.gitconfig ~/.gitconfig
-ln -sf ~/dev/kent/dotfile/.ideavimrc ~/.ideavimrc
-ln -sf ~/dev/kent/dotfile/.tmux.conf ~/.tmux.conf
-ln -sf ~/dev/kent/dotfile/.profile ~/.profile
-ln -sf ~/dev/kent/dotfile/.vimrc ~/.vimrc
-ln -sf ~/dev/kent/dotfile/.zshrc ~/.zshrc
+ln -sf ~/.config/dotfile/.gitconfig ~/.gitconfig
+ln -sf ~/.config/dotfile/.ideavimrc ~/.ideavimrc
+ln -sf ~/.config/dotfile/.tmux.conf ~/.tmux.conf
+ln -sf ~/.config/dotfile/.profile ~/.profile
+ln -sf ~/.config/dotfile/.vimrc ~/.vimrc
+ln -sf ~/.config/dotfile/.zshrc ~/.zshrc
 ```
 
 windows
