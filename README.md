@@ -3,14 +3,23 @@
 
 ## pre-installed
 
-- tmux + tpm plugin
+- tmux 
+  1. tpm plugin
 - git
+  1. lazgit
+  2. delta (diff tools)
 - zsh
-- oh-my-zsh
-- powerlevel10k
-- idea + vim plugin
-- lazgit
-- delta (diff tools)
+  1. oh-my-zsh
+  2. powerlevel10k
+  3. nerdfont
+- idea 
+  1. vim plugin
+- nvim
+  - rg
+  - fd
+  - lazygit
+  - nerdfont
+
 
 ## usage
 
