@@ -15,15 +15,16 @@
 - idea 
   1. vim plugin
 - nvim
-  - rg
-  - fd
-  - lazygit
-  - nerdfont
+  1. rg
+  2. fd
+  3. lazygit
+  4. nerdfont
+  5. fzf
 
 
 ## usage
 
-> NOTE: BACKUP all of those file before `ln` command 
+> NOTE: BACKUP all of those files before `ln` command 
 
 linux/maxos
 
