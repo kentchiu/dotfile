@@ -43,7 +43,7 @@ set showmode
 set showcmd
 
 let mapleader = " "
-inoremap jj <esc>
+inoremap jk <esc>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " IdeaVim Only Setting
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -54,7 +54,7 @@ set ideajoin
 set idearefactormode=keep
 
 "" Set Handlers
-"sethandler a:vim
+sethandler a:vim
 "sethandler <C-A> a:ide  " select all
 "sethandler <C-C> a:ide  " copy
 "sethandler <C-V> a:ide  " paste
@@ -74,7 +74,6 @@ set which-key
 set keep-english-in-normal
 """ Plugin Settings: NERDTree ---------------------------------
 " Focus project window
-noremap <C-S-e> :NERDTreeFocus <CR>
 
 """ Plugin Settings: easymotion -------------------------------
 "map <leader><leader>s <Plug>(easymotion-s)
@@ -92,20 +91,57 @@ let g:WhichKey_ShowVimActions = "true"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Actions
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""" Top Level """"""""""""""""""""""""""""""""""""""
+map <leader>% <Action>(SplitVertically)
+map <leader>- <Action>(SplitHorizontally)
+map <leader>/ <Action>(FindInPath)
+" switch to other buffer
+"map <leader>` <Action>()
+map <leader><space> <Action>(SearchEverywhere)
+noremap <leader> e :NERDTreeToggle <CR>
+
 
 """""""""""""""""""""""""""""""""""""Buffer,Tab,Window""""""""""""""""""""""""""""""""""""""
 " window
 "map <C-m> <Action>(HideAllWindows)
 
+let g:WhichKeyDesc_search = "<leader>b buffer"
+
+" Move to window using the <ctrl> hjkl keys
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
+
+
+" Buffer
+map <S-h> <Action>(PreviousTab)
+map <S-l> <Action>(NextTab)
+map [b <Action>(PreviousTab)
+map ]b <Action>(NextTab)
+
+
+map <esc> :noh<cr><esc>
+
+map gw *N
+
+
+map <leader>ft <action>(ActivateTerminalToolWindow)
+
+" Resize window using <ctrl> arrow keys (NOT SUPPORTED YET)
+
+
+
 """"""""""""""""""""""""""""""""""""""Search(s)""""""""""""""""""""""""""""""""""""""
 let g:WhichKeyDesc_search = "<leader>s Search"
-"map <leader>su <Action>(FindUsages)
-"map <leader>sf <Action>(Find)
-"map <leader>sF <Action>(FindInPath)
-"map <leader>sr <Action>(Replace)
+map <leader>su <Action>(FindUsages)
+map <leader>sf <Action>(SearchEverywhere)
+map <leader>sg <Action>(FindInPath)
+map <leader>sr <Action>(Replace)
 "map <leader>sR <Action>(ReplaceInPath)
-"map <leader>ss <Action>(SelectNextOccurrence)
+"map <leader>ss <Action>(SelectNextOccurrence)G
 
 """"""""""""""""""""""""""""""""""""""Refactoring(r)""""""""""""""""""""""""""""""""""""""
 let g:WhichKeyDesc_refactory = "<leader>r Refactory"
@@ -172,6 +208,8 @@ let g:WhichKeyDesc_navigation = "<leader>n Navigation"
 
 "map <Tab> <Action>(NextTab)                        " use gt instead
 "map <S-Tab> <Action>(PreviousTab)                  " use gT instead
+
+
 "map <leader>q <Action>(CloseContent)               " use :q
 "map <leader>Q <Action>(CloseAllEditors)            " use :tabo
 
@@ -200,3 +238,5 @@ let g:WhichKeyDesc_navigation = "<leader>n Navigation"
 "map <C-S-c> <Action>(ConsoleView.ClearAll)
 
 "imap <C-n> <Action>(GotoNextError)
+
+
