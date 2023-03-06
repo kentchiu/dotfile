@@ -54,11 +54,11 @@ set ideajoin
 set idearefactormode=keep
 
 "" Set Handlers
-sethandler a:vim
-sethandler <C-A> a:ide  " select all
-sethandler <C-C> a:ide  " copy
-sethandler <C-V> a:ide  " paste
-sethandler <C-F> a:ide  " find
+"sethandler a:vim
+"sethandler <C-A> a:ide  " select all
+"sethandler <C-C> a:ide  " copy
+"sethandler <C-V> a:ide  " paste
+"sethandler <C-F> a:ide  " find
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugins
@@ -77,10 +77,10 @@ set keep-english-in-normal
 noremap <C-S-e> :NERDTreeFocus <CR>
 
 """ Plugin Settings: easymotion -------------------------------
-map <leader><leader>s <Plug>(easymotion-s)
-map <leader><leader>f <Plug>(easymotion-f)
-map <leader><leader>F <Plug>(easymotion-F)
-map <leader><leader>w <Plug>(easymotion-w)
+"map <leader><leader>s <Plug>(easymotion-s)
+"map <leader><leader>f <Plug>(easymotion-f)
+"map <leader><leader>F <Plug>(easymotion-F)
+"map <leader><leader>w <Plug>(easymotion-w)
 
 """ Plugin Settings: Which Key Config -------------------------
 set notimeout
@@ -96,57 +96,57 @@ let g:WhichKey_ShowVimActions = "true"
 
 """""""""""""""""""""""""""""""""""""Buffer,Tab,Window""""""""""""""""""""""""""""""""""""""
 " window
-map <C-m> <Action>(HideAllWindows)
+"map <C-m> <Action>(HideAllWindows)
 
 """"""""""""""""""""""""""""""""""""""Search(s)""""""""""""""""""""""""""""""""""""""
 let g:WhichKeyDesc_search = "<leader>s Search"
-map <leader>su <Action>(FindUsages)
-map <leader>sf <Action>(Find)
-map <leader>sF <Action>(FindInPath)
-map <leader>sr <Action>(Replace)
-map <leader>sR <Action>(ReplaceInPath)
-map <leader>ss <Action>(SelectNextOccurrence)
+"map <leader>su <Action>(FindUsages)
+"map <leader>sf <Action>(Find)
+"map <leader>sF <Action>(FindInPath)
+"map <leader>sr <Action>(Replace)
+"map <leader>sR <Action>(ReplaceInPath)
+"map <leader>ss <Action>(SelectNextOccurrence)
 
 """"""""""""""""""""""""""""""""""""""Refactoring(r)""""""""""""""""""""""""""""""""""""""
 let g:WhichKeyDesc_refactory = "<leader>r Refactory"
-map <leader>rr <Action>(Refactorings.QuickListPopupAction)
-map <leader>ra <Action>(ShowIntentionActions)
-map <leader>rn <Action>(RenameElement)
-map <leader>rm <Action>(ExtractMethod)
-map <leader>ri <Action>(Inline)
-map <leader>rv <Action>(IntroduceVariable)
-map <leader>rc <Action>(IntroduceConstant)
-map <leader>rp <Action>(IntroduceParameter)
-map <leader>rf <Action>(IntroduceField)
+"map <leader>rr <Action>(Refactorings.QuickListPopupAction)
+"map <leader>ra <Action>(ShowIntentionActions)
+"map <leader>rn <Action>(RenameElement)
+"map <leader>rm <Action>(ExtractMethod)
+"map <leader>ri <Action>(Inline)
+"map <leader>rv <Action>(IntroduceVariable)
+"map <leader>rc <Action>(IntroduceConstant)
+"map <leader>rp <Action>(IntroduceParameter)
+"map <leader>rf <Action>(IntroduceField)
 
 """"""""""""""""""""""""""""""""""""""Debug(d)""""""""""""""""""""""""""""""""""""""
 let g:WhichKeyDesc_debug = "<leader>d Debug"
-map <leader>dd <Action>(Debug)
-map <leader>dt <Action>(ToggleLineBreakpoint)
-map <leader>ds <Action>(Stop)
-map <leader>dw <Action>(Debugger.AddToWatch)
-map <leader>di <Action>(Debugger.AddInlineWatch)
-
-map <C-j> <Action>(StepOver)
-map <C-k> <Action>(Resume)
-map <C-h> <Action>(StepOut)
-map <C-l> <Action>(ForceStepInto)
-map <C-c> <Action>(ForceRunToCursor)
-
-map <C-b> <Action>(CompileDirty)
-imap <C-b> <Action>(CompileDirty)
+"map <leader>dd <Action>(Debug)
+"map <leader>dt <Action>(ToggleLineBreakpoint)
+"map <leader>ds <Action>(Stop)
+"map <leader>dw <Action>(Debugger.AddToWatch)
+"map <leader>di <Action>(Debugger.AddInlineWatch)
+"
+"map <C-j> <Action>(StepOver)
+"map <C-k> <Action>(Resume)
+"map <C-h> <Action>(StepOut)
+"map <C-l> <Action>(ForceStepInto)
+"map <C-c> <Action>(ForceRunToCursor)
+"
+"map <C-b> <Action>(CompileDirty)
+"imap <C-b> <Action>(CompileDirty)
 
 
 """"""""""""""""""""""""""""""""""""""Code(c)""""""""""""""""""""""""""""""""""""""
 let g:WhichKeyDesc_code = "<leader>c Code"
-map <leader>cf <Action>(ReformatCode)
-let g:WhichKeyDesc_language_reformat = "<leader>cf Format"
-map <leader>co <Action>(OptimizeImports)
-map <leader>cg <Action>(Generate)
-map <leader>cp <Action>(ParameterInfo)
-
-" Show hover doc
-map <leader>ch <Action>(ShowErrorDescription)
+"map <leader>cf <Action>(ReformatCode)
+"let g:WhichKeyDesc_language_reformat = "<leader>cf Format"
+"map <leader>co <Action>(OptimizeImports)
+"map <leader>cg <Action>(Generate)
+"map <leader>cp <Action>(ParameterInfo)
+"
+"" Show hover doc
+"map <leader>ch <Action>(ShowErrorDescription)
 
 " Keep visual selection
 vnoremap < <gv
@@ -154,17 +154,17 @@ vnoremap > >gv
 
 """"""""""""""""""""""""""""""""""""""Navigation(n)""""""""""""""""""""""""""""""""""""""
 let g:WhichKeyDesc_navigation = "<leader>n Navigation"
-map <leader>ni <Action>(GotoImplementation)
-map <leader>ns <Action>(GotoSuperMethod)
-map <leader>ng <Action>(JumpToLastChange)
-map <leader>nh <Action>(TypeHierarchy)
-map <leader>nf <Action>(FileStructurePopup)
+"map <leader>ni <Action>(GotoImplementation)
+"map <leader>ns <Action>(GotoSuperMethod)
+"map <leader>ng <Action>(JumpToLastChange)
+"map <leader>nh <Action>(TypeHierarchy)
+"map <leader>nf <Action>(FileStructurePopup)
 
 """"""""""""""""""""""""""""""""""""""Tools""""""""""""""""""""""""""""""""""""""
 
 " Terminal
-map <C-S-t> <action>(ActivateTerminalToolWindow)
-map <C-S-d> <action>(ActivateDebugToolWindow)
+"map <C-S-t> <action>(ActivateTerminalToolWindow)
+"map <C-S-d> <action>(ActivateDebugToolWindow)
 
 
 """"""""""""""""""""""""""""""""""""""DEPRECATED""""""""""""""""""""""""""""""""""""""
@@ -191,12 +191,12 @@ map <C-S-d> <action>(ActivateDebugToolWindow)
 " ToolWindowsGroup
 
 " Popup navigation
-map <A-j> <Action>(PopupMenu-selectnext)
-map <A-k> <Action>(PopupMenu-selectprev)
+"map <A-j> <Action>(PopupMenu-selectnext)
+"map <A-k> <Action>(PopupMenu-selectprev)
 
 "map <C-S-s> <Action>(Console.Jdbc.Execute)
 
 " !!not works!!
 "map <C-S-c> <Action>(ConsoleView.ClearAll)
 
-imap <C-n> <Action>(GotoNextError)
+"imap <C-n> <Action>(GotoNextError)
