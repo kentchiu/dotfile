@@ -2,7 +2,6 @@
 set clipboard=unnamed,unnamedplus
 
 " Set scrolloff 7 lines to the cursor - when moving vertically using j/k
-h
 
 set scrolloff=7
 
@@ -33,10 +32,6 @@ set showmatch
 " use visual bell instead of beeping
 set visualbell
 set tm=500
-
-
-" Don't use Ex mode, use Q for formatting.
-map Q gq
 
 " message on the status line to show current mode
 set showmode
@@ -78,11 +73,11 @@ set keep-english-in-normal
 " Focus project window
 
 """ Plugin Settings: easymotion -------------------------------
-map <leader><leader>s <Plug>(easymotion-s)
-map <leader><leader>f <Plug>(easymotion-f)
-map <leader><leader>F <Plug>(easymotion-F)
-map <leader><leader>t <Plug>(easymotion-t)
-map <leader><leader>T <Plug>(easymotion-T)
+map ,,s <Plug>(easymotion-s)
+map ,,f <Plug>(easymotion-f)
+map ,,F <Plug>(easymotion-F)
+map ,,t <Plug>(easymotion-t)
+map ,,T <Plug>(easymotion-T)
 
 """ Plugin Settings: Which Key Config -------------------------
 set notimeout
@@ -94,7 +89,6 @@ let g:WhichKey_ShowVimActions = "true"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Actions
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""" Top Level """"""""""""""""""""""""""""""""""""""
 map <leader>% <Action>(SplitVertically)
@@ -109,8 +103,8 @@ noremap <leader> e :NERDTreeToggle <CR>
 vnoremap < <gv
 vnoremap > >gv
 
-" Move to window using the <ctrl> hjkl keys
-map <C-h> <C-w>h
+" move to window using the <ctrl> hjkl keys
+map <c-h> <c-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
@@ -120,6 +114,7 @@ map <C-l> <C-w>l
 map <S-h> <Action>(PreviousTab)
 map <S-l> <Action>(NextTab)
 
+" no highlight
 map <esc> :noh<cr><esc>
 
 " select work under cursor
@@ -128,11 +123,7 @@ map gw *N
 
 
 """""""""""""""""""""""""""""""""""""Buffer,Tab,Window""""""""""""""""""""""""""""""""""""""
-" window
-"map <C-m> <Action>(HideAllWindows)
-
 let g:WhichKeyDesc_buffer = "<leader>b buffer"
-
 map <leader>bb <Action>(RecentFiles)
 map <leader>bd <Action>(CloseContent)
 map <leader>bD <Action>(CloseContent)
@@ -141,8 +132,6 @@ map <leader>bP <Action>(CloseAllUnpinnedEditors)
 
 
 " Resize window using <ctrl> arrow keys (NOT SUPPORTED YET)
-
-
 """"""""""""""""""""""""""""""""""""""Search(s)""""""""""""""""""""""""""""""""""""""
 let g:WhichKeyDesc_search = "<leader>s search"
 map <leader>sb <Action>(RecentFiles)
@@ -255,25 +244,6 @@ map [b <Action>(PreviousTab)
 map ]b <Action>(NextTab)
 
 
-""""""""""""""""""""""""""""""""""""""Tools""""""""""""""""""""""""""""""""""""""
-
-" Terminal
-"map <C-S-t> <action>(ActivateTerminalToolWindow)
-"map <C-S-d> <action>(ActivateDebugToolWindow)
-
-
-""""""""""""""""""""""""""""""""""""""DEPRECATED""""""""""""""""""""""""""""""""""""""
-" Tab navigation
-
-"map <Tab> <Action>(NextTab)                        " use gt instead
-"map <S-Tab> <Action>(PreviousTab)                  " use gT instead
-
-
-
-
-"map <leader>q <Action>(CloseContent)               " use :q
-"map <leader>Q <Action>(CloseAllEditors)            " use :tabo
-
 " Alt+j/k for autocompletion popup
 "inoremap <A-j> <C-n>                               " use <UP>
 "inoremap <A-k> <C-p>                               " use <DOWN>
@@ -285,19 +255,5 @@ map ]b <Action>(NextTab)
 " Zen mode
 "map <leader>zz <Action>(TogglePresentationMode)
 
-" nnoremap ,s :action FileStructurePopup<CR>
-" nnoremap gb :action JumpToLastChange<CR>
-" ToolWindowsGroup
-
-" Popup navigation
-"map <A-j> <Action>(PopupMenu-selectnext)
-"map <A-k> <Action>(PopupMenu-selectprev)
-
-"map <C-S-s> <Action>(Console.Jdbc.Execute)
-
-" !!not works!!
-"map <C-S-c> <Action>(ConsoleView.ClearAll)
-
-"imap <C-n> <Action>(GotoNextError)
 
 
