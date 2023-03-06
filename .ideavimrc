@@ -121,7 +121,6 @@ map <esc> :noh<cr><esc>
 map gw *N
 
 
-
 """""""""""""""""""""""""""""""""""""Buffer,Tab,Window""""""""""""""""""""""""""""""""""""""
 let g:WhichKeyDesc_buffer = "<leader>b buffer"
 map <leader>bb <Action>(RecentFiles)
@@ -225,23 +224,33 @@ map <leader>xx <Action>(ActivateProblemsViewToolWindow)
 """"""""""""""""""""""""""""""""""""""Navigation(g)""""""""""""""""""""""""""""""""""""""
 "let g:WhichKeyDesc_goto = "g goto"
 
-map gi <Action>(GotoImplementation)
-map gs <Action>(GotoSuperMethod)
+map gd <Action>(GotoDeclarationOnly)
+map gf <Action>(FileStructurePopup)
 map gg <Action>(JumpToLastChange)
 map gh <Action>(TypeHierarchy)
-map gf <Action>(FileStructurePopup)
+map gi <Action>(GotoImplementation)
+map gs <Action>(GotoSuperMethod)
 map gr <Action>(FindUsages)
+" K Hover
 map K <Action>(ParameterInfo)
+" gK Signature Help
+" <c-K> for Signature Help of insert mode
 
 """"""""""""""""""""""""""""""""""""""Next(])""""""""""""""""""""""""""""""""""""""
 let g:WhichKeyDesc_next = "] next"
-map [b <Action>(PreviousTab)
 map ]b <Action>(NextTab)
+" ]d NextDiagnostic
+" ]e Next Error
+" ]w Next Warning
+" ]t Next Todo
+" ]q Next trouble/quickfix item
+" ]] Next Reference
+" ]m Method End
+" ]M Method Start
 
 """"""""""""""""""""""""""""""""""""""Previous([)""""""""""""""""""""""""""""""""""""""
 let g:WhichKeyDesc_prevoius = "[ previous"
 map [b <Action>(PreviousTab)
-map ]b <Action>(NextTab)
 
 
 " Alt+j/k for autocompletion popup
