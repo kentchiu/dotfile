@@ -32,7 +32,6 @@ linux/maxos
 ln -sf ~/.config/dotfile/.gitconfig ~/.gitconfig
 ln -sf ~/.config/dotfile/.ideavimrc ~/.ideavimrc
 ln -sf ~/.config/dotfile/.tmux.conf ~/.tmux.conf
-ln -sf ~/.config/dotfile/.profile ~/.profile
 ln -sf ~/.config/dotfile/.vimrc ~/.vimrc
 ln -sf ~/.config/dotfile/.zshrc ~/.zshrc
 ```
