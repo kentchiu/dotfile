@@ -1,6 +1,6 @@
 [user]
-	email = kent.cwg@gmail.com
-	name = Kent Chiu
+  email = kent.cwg@gmail.com
+  name = Kent Chiu
 
 
 [alias]
@@ -10,7 +10,7 @@
   br = branch	
 
 [core]
-	editor = vim
+  editor = vim
   pager = delta
 
 [interactive]
@@ -24,7 +24,7 @@
 
 [delta]
   line-numbers = true
-  side-by-side = true
+  side-by-side = false
 #  navigate = true
 #  features = decorations
 

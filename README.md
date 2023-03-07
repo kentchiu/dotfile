@@ -34,6 +34,7 @@ ln -sf ~/.config/dotfile/.ideavimrc ~/.ideavimrc
 ln -sf ~/.config/dotfile/.tmux.conf ~/.tmux.conf
 ln -sf ~/.config/dotfile/.vimrc ~/.vimrc
 ln -sf ~/.config/dotfile/.zshrc ~/.zshrc
+ln -sf ~/.config/dotfile/.lazygit-config ~/config/lazygit/config.yml
 ```
 
 windows
