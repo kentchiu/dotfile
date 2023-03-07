@@ -2,6 +2,7 @@
 set clipboard=unnamed,unnamedplus
 
 " Set scrolloff 7 lines to the cursor - when moving vertically using j/k
+
 set scrolloff=7
 
 " the ":substitute" flag 'g' is by default
@@ -32,10 +33,6 @@ set showmatch
 set visualbell
 set tm=500
 
-
-" Don't use Ex mode, use Q for formatting.
-map Q gq
-
 " message on the status line to show current mode
 set showmode
 
@@ -43,7 +40,7 @@ set showmode
 set showcmd
 
 let mapleader = " "
-inoremap jj <esc>
+inoremap jk <esc>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " IdeaVim Only Setting
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -54,7 +51,7 @@ set ideajoin
 set idearefactormode=keep
 
 "" Set Handlers
-"sethandler a:vim
+sethandler a:vim
 "sethandler <C-A> a:ide  " select all
 "sethandler <C-C> a:ide  " copy
 "sethandler <C-V> a:ide  " paste
@@ -74,13 +71,13 @@ set which-key
 set keep-english-in-normal
 """ Plugin Settings: NERDTree ---------------------------------
 " Focus project window
-noremap <C-S-e> :NERDTreeFocus <CR>
 
 """ Plugin Settings: easymotion -------------------------------
-"map <leader><leader>s <Plug>(easymotion-s)
-"map <leader><leader>f <Plug>(easymotion-f)
-"map <leader><leader>F <Plug>(easymotion-F)
-"map <leader><leader>w <Plug>(easymotion-w)
+map ,,s <Plug>(easymotion-s)
+map ,,f <Plug>(easymotion-f)
+map ,,F <Plug>(easymotion-F)
+map ,,t <Plug>(easymotion-t)
+map ,,T <Plug>(easymotion-T)
 
 """ Plugin Settings: Which Key Config -------------------------
 set notimeout
@@ -93,34 +90,121 @@ let g:WhichKey_ShowVimActions = "true"
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Actions
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""" Top Level """"""""""""""""""""""""""""""""""""""
+map <leader>% <Action>(SplitVertically)
+map <leader>- <Action>(SplitHorizontally)
+map <leader>/ <Action>(FindInPath)
+" switch to other buffer
+map <leader>` <Action>(RecentFiles)
+map <leader><space> <Action>(GotoFile)
+noremap <leader> e :NERDTreeToggle <CR>
+
+" Keep visual selection
+vnoremap < <gv
+vnoremap > >gv
+
+" move to window using the <ctrl> hjkl keys
+map <c-h> <c-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
+
+
+" Buffer
+map <S-h> <Action>(PreviousTab)
+map <S-l> <Action>(NextTab)
+
+" no highlight
+map <esc> :noh<cr><esc>
+
+" select work under cursor
+map gw *N
+
 
 """""""""""""""""""""""""""""""""""""Buffer,Tab,Window""""""""""""""""""""""""""""""""""""""
-" window
-"map <C-m> <Action>(HideAllWindows)
+let g:WhichKeyDesc_buffer = "<leader>b buffer"
+map <leader>bb <Action>(RecentFiles)
+map <leader>bd <Action>(CloseContent)
+map <leader>bD <Action>(CloseContent)
+map <leader>bp <Action>(PinActiveEditorTab)
+map <leader>bP <Action>(CloseAllUnpinnedEditors)
 
+
+" Resize window using <ctrl> arrow keys (NOT SUPPORTED YET)
 """"""""""""""""""""""""""""""""""""""Search(s)""""""""""""""""""""""""""""""""""""""
-let g:WhichKeyDesc_search = "<leader>s Search"
-"map <leader>su <Action>(FindUsages)
-"map <leader>sf <Action>(Find)
-"map <leader>sF <Action>(FindInPath)
-"map <leader>sr <Action>(Replace)
-"map <leader>sR <Action>(ReplaceInPath)
-"map <leader>ss <Action>(SelectNextOccurrence)
+let g:WhichKeyDesc_search = "<leader>s search"
+map <leader>sb <Action>(RecentFiles)
+map <leader>sd <Action>(ActivateProblemsViewToolWindow)
+map <leader>sg <Action>(FindInPath)
+map <leader>sm <Action>(ActivateBookmarksToolWindow)
+map <leader>sr <Action>(ReplaceInPath)
+map <leader>ss <Action>(GotoSymbol)
+map <leader>st <Action>(ActivateTODOToolWindow)
+map <leader>sn <Action>(ActivateNotificationsToolWindow)
 
-""""""""""""""""""""""""""""""""""""""Refactoring(r)""""""""""""""""""""""""""""""""""""""
-let g:WhichKeyDesc_refactory = "<leader>r Refactory"
-"map <leader>rr <Action>(Refactorings.QuickListPopupAction)
-"map <leader>ra <Action>(ShowIntentionActions)
-"map <leader>rn <Action>(RenameElement)
-"map <leader>rm <Action>(ExtractMethod)
-"map <leader>ri <Action>(Inline)
-"map <leader>rv <Action>(IntroduceVariable)
-"map <leader>rc <Action>(IntroduceConstant)
-"map <leader>rp <Action>(IntroduceParameter)
-"map <leader>rf <Action>(IntroduceField)
+
+""""""""""""""""""""""""""""""""""""""Code(c)""""""""""""""""""""""""""""""""""""""
+let g:WhichKeyDesc_code = "<leader>c code"
+map <leader>ca <Action>(ShowIntentionActions)
+" <c-v> conflict with windows paste shortcut
+map <leader>cc <c-v>
+map <leader>ca <Action>(ShowIntentionActions)
+map <leader>cf <Action>(ReformatCode)
+map <leader>cg <Action>(Generate)
+map <leader>co <Action>(OptimizeImports)
+map <leader>cr <Action>(RenameElement)
+map <leader>cs <Action>(ActivateStructureToolWindow)
+"
+"" Show hover doc
+"map <leader>ch <Action>(ShowErrorDescription)
+
+""""""""""""""""""""""""""""""""""""""refactor(r)""""""""""""""""""""""""""""""""""""""
+let g:WhichKeyDesc_refactory = "<leader>r refactory"
+map <leader>rr <Action>(Refactorings.QuickListPopupAction)
+map <leader>ra <Action>(ShowIntentionActions)
+map <leader>rn <Action>(RenameElement)
+map <leader>rm <Action>(ExtractMethod)
+map <leader>ri <Action>(Inline)
+map <leader>rv <Action>(IntroduceVariable)
+map <leader>rc <Action>(IntroduceConstant)
+map <leader>rp <Action>(IntroduceParameter)
+map <leader>rf <Action>(IntroduceField)
+
+""""""""""""""""""""""""""""""""""""""find/find(f)""""""""""""""""""""""""""""""""""""""
+let g:WhichKeyDesc_find_file = "<leader>f find/file"
+map <leader>fb <Action>(RecentFiles)
+map <leader>fe :NERDTreeToggle <CR>
+map <leader>ff <Action>(GotoFile)
+map <leader>fg <Action>(FindInPath)
+map <leader>fn <Action>(NewFile)
+map <leader>ft <action>(ActivateTerminalToolWindow)
+
+""""""""""""""""""""""""""""""""""""""git(g)""""""""""""""""""""""""""""""""""""""
+let g:WhichKeyDesc_git = "<leader>g git"
+map <leader>gc <Action>(CheckinProject)
+map <leader>gg <Action>(Vcs.QuickListPopupAction)
+
+" git hunk not supported yet
+"map <leader>gh <Action>()
+""""""""""""""""""""""""""""""""""""""quit/session(q)""""""""""""""""""""""""""""""""""""""
+let g:WhichKeyDesc_quit_and_session = "<leader>q quit/session"
+map <leader>qq <Action>(CloseAllEditors)
+
+""""""""""""""""""""""""""""""""""""""ui(u)""""""""""""""""""""""""""""""""""""""
+let g:WhichKeyDesc_git = "<leader>u ui"
+map <leader>uw <Action>(EditorToggleUseSoftWraps)
+
+
+""""""""""""""""""""""""""""""""""""""diagnostics/quickfix""""""""""""""""""""""""""""""""""""""
+let g:WhichKeyDesc_diagnostics_and_quickfix = "<leader>x diagnostics/quickfix"
+map <leader>xq <Action>(ActivateProblemsViewToolWindow)
+map <leader>xt <Action>(ActivateTODOToolWindow)
+map <leader>xx <Action>(ActivateProblemsViewToolWindow)
+
+
 
 """"""""""""""""""""""""""""""""""""""Debug(d)""""""""""""""""""""""""""""""""""""""
-let g:WhichKeyDesc_debug = "<leader>d Debug"
+"let g:WhichKeyDesc_debug = "<leader>d Debug"
 "map <leader>dd <Action>(Debug)
 "map <leader>dt <Action>(ToggleLineBreakpoint)
 "map <leader>ds <Action>(Stop)
@@ -137,43 +221,37 @@ let g:WhichKeyDesc_debug = "<leader>d Debug"
 "imap <C-b> <Action>(CompileDirty)
 
 
-""""""""""""""""""""""""""""""""""""""Code(c)""""""""""""""""""""""""""""""""""""""
-let g:WhichKeyDesc_code = "<leader>c Code"
-"map <leader>cf <Action>(ReformatCode)
-"let g:WhichKeyDesc_language_reformat = "<leader>cf Format"
-"map <leader>co <Action>(OptimizeImports)
-"map <leader>cg <Action>(Generate)
-"map <leader>cp <Action>(ParameterInfo)
-"
-"" Show hover doc
-"map <leader>ch <Action>(ShowErrorDescription)
+""""""""""""""""""""""""""""""""""""""Navigation(g)""""""""""""""""""""""""""""""""""""""
+"let g:WhichKeyDesc_goto = "g goto"
 
-" Keep visual selection
-vnoremap < <gv
-vnoremap > >gv
+map gd <Action>(GotoDeclarationOnly)
+map gf <Action>(FileStructurePopup)
+map gg <Action>(JumpToLastChange)
+map gh <Action>(TypeHierarchy)
+map gi <Action>(GotoImplementation)
+map gs <Action>(GotoSuperMethod)
+map gr <Action>(FindUsages)
+" K Hover
+map K <Action>(ParameterInfo)
+" gK Signature Help
+" <c-K> for Signature Help of insert mode
 
-""""""""""""""""""""""""""""""""""""""Navigation(n)""""""""""""""""""""""""""""""""""""""
-let g:WhichKeyDesc_navigation = "<leader>n Navigation"
-"map <leader>ni <Action>(GotoImplementation)
-"map <leader>ns <Action>(GotoSuperMethod)
-"map <leader>ng <Action>(JumpToLastChange)
-"map <leader>nh <Action>(TypeHierarchy)
-"map <leader>nf <Action>(FileStructurePopup)
+""""""""""""""""""""""""""""""""""""""Next(])""""""""""""""""""""""""""""""""""""""
+let g:WhichKeyDesc_next = "] next"
+map ]b <Action>(NextTab)
+" ]d NextDiagnostic
+" ]e Next Error
+" ]w Next Warning
+" ]t Next Todo
+" ]q Next trouble/quickfix item
+" ]] Next Reference
+" ]m Method End
+" ]M Method Start
 
-""""""""""""""""""""""""""""""""""""""Tools""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""Previous([)""""""""""""""""""""""""""""""""""""""
+let g:WhichKeyDesc_prevoius = "[ previous"
+map [b <Action>(PreviousTab)
 
-" Terminal
-"map <C-S-t> <action>(ActivateTerminalToolWindow)
-"map <C-S-d> <action>(ActivateDebugToolWindow)
-
-
-""""""""""""""""""""""""""""""""""""""DEPRECATED""""""""""""""""""""""""""""""""""""""
-" Tab navigation
-
-"map <Tab> <Action>(NextTab)                        " use gt instead
-"map <S-Tab> <Action>(PreviousTab)                  " use gT instead
-"map <leader>q <Action>(CloseContent)               " use :q
-"map <leader>Q <Action>(CloseAllEditors)            " use :tabo
 
 " Alt+j/k for autocompletion popup
 "inoremap <A-j> <C-n>                               " use <UP>
@@ -186,17 +264,5 @@ let g:WhichKeyDesc_navigation = "<leader>n Navigation"
 " Zen mode
 "map <leader>zz <Action>(TogglePresentationMode)
 
-" nnoremap ,s :action FileStructurePopup<CR>
-" nnoremap gb :action JumpToLastChange<CR>
-" ToolWindowsGroup
 
-" Popup navigation
-"map <A-j> <Action>(PopupMenu-selectnext)
-"map <A-k> <Action>(PopupMenu-selectprev)
 
-"map <C-S-s> <Action>(Console.Jdbc.Execute)
-
-" !!not works!!
-"map <C-S-c> <Action>(ConsoleView.ClearAll)
-
-"imap <C-n> <Action>(GotoNextError)
