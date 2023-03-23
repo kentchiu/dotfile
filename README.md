@@ -37,6 +37,14 @@ ln -sf ~/.config/dotfile/.zshrc ~/.zshrc
 ln -sf ~/.config/dotfile/.lazygit-config ~/config/lazygit/config.yml
 ```
 
+nvim
+
+```bash
+clone git@github.com:kentchiu/nvim-config.git ~/.config/nvim-config
+ln -sf ~/.config/nvim-config ~/config/nvim
+```
+
+
 windows
 
 Open powershell with administrator privileges
