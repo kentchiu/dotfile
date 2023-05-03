@@ -118,6 +118,9 @@ source $ZSH/oh-my-zsh.sh
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+###
+### Custom Setting 
+###
 
 # nvm
 export NVM_DIR="$HOME/.nvm"
@@ -138,4 +141,8 @@ export SDKMAN_DIR="$HOME/.sdkman"
 
 # nvim
 alias vi='nvim'
-alias v='nvim'
+
+# remove above if cuda not match
+export CUDA_HOME=/usr/local/cuda
+export PATH=$PATH:$CUDA_HOME/bin
+export LD_LIBRARY_PATH=/usr/local/cuda-12.1/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}:/usr/lib/wsl/lib
