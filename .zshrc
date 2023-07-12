@@ -85,6 +85,7 @@ plugins=(
   git
   zsh-autosuggestions
   poetry
+  fzf
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -141,6 +142,20 @@ export SDKMAN_DIR="$HOME/.sdkman"
 
 # nvim
 alias vi='nvim'
+
+#################
+# FZF 
+#################
+# go to folder from under user home
+alias g='cd $(fd -t d . $HOME| fzf)'
+# find file under user home 
+alias f='$(fd -t f . $HOME| fzf)'
+# alt+c to change folder
+export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'"
+# ctrl + t to search file
+export FZF_CTRL_T_OPTS="--preview '(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'"
+# search history
+export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap --bind '?:toggle-preview'"
 
 # remove above if cuda not match
 export CUDA_HOME=/usr/local/cuda
