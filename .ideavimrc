@@ -105,6 +105,11 @@ let mapleader = " "
 " NERDTree toggle
 nnoremap <leader>e :NERDTreeToggle<CR>
 
+" top level
+map <leader>% <Action>(SplitVertically)
+map <leader>- <Action>(SplitHorizontally)
+map <leader>/ <Action>(FindInPath)
+
 " LSP
 
 let g:WhichKeyDesc_code = "<leader>c code"
@@ -216,9 +221,6 @@ nnoremap <C-l> <C-w>l
 " " => Actions
 " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " """"""""""""""""""""""""""""""""""""" Top Level """"""""""""""""""""""""""""""""""""""
-" map <leader>% <Action>(SplitVertically)
-" map <leader>- <Action>(SplitHorizontally)
-" map <leader>/ <Action>(FindInPath)
 " " switch to other buffer
 " map <leader>` <Action>(RecentFiles)
 " map <leader><space> <Action>(GotoFile)
