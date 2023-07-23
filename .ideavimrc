@@ -1,54 +1,174 @@
 
-set clipboard=unnamed,unnamedplus " Use the OS clipboard by default
-set noignorecase " Ignore case when searching
+" Do incremental searching.
+" set incsearch
+
+" Don't use Ex mode, use Q for formatting.
+ map Q gq
+
+" ------------------------------------- Plugins config
+
+set easymotion " plugin install need
+" which key "
+set which-key " plugin install need
+set notimeout
+let g:WhichKey_FontSize = 16
+" set commentary
+" " IdeaVimExtension 输入法切换
+" set keep-english-in-normal-and-restore-in-insert
+" NERDTree
+" 需要关闭 Enable Preview Tab 和 Open Files with Single Click
+" set NERDTree
+" let g:NERDTreeMapPreview = 'O'
+
+
+" ------------------------------------- basic config
+set clipboard=unnamed,unnamedplus " Use te OS clipboard by default
+set ignorecase " Ignore case when searching
 set number " print the line number in front of each line
 set relativenumber " show the line number relative to the line with the cursor
 set scrolloff=7 " Set scrolloff 7 lines to the cursor - when moving vertically using j/k
-set showcmd " show (partial) command in the status bar
-set smartcase " When searching try to be smart about cases
+" set showcmd " show (partial) command in the status bar
+" set smartcase " When searching try to be smart about cases\
 
 
-
-" the ":substitute" flag 'g' is by default
-set gdefault
+" " the ":substitute" flag 'g' is by default
+" " set gdefault
 set hlsearch " Highlight search results
 set incsearch " Makes search act like search in modern browsers
-set showmatch " Show matching brackets when text indicator is over them
+" " set showmatch " Show matching brackets when text indicator is over them
 set visualbell " use visual bell instead of beeping
-set tm=500
-set showmode " message on the status line to show current mode
-
-let mapleader = " "
-inoremap jk <esc>
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" IdeaVim Only Setting
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
+" set tm=500
+" " set showmode " message on the status line to show current mode
+"
+" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" " IdeaVim Only Setting
+" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"
 " Enable native idea paste action for put operations
 set clipboard+=ideaput
 set ideajoin
 set idearefactormode=keep
+set ideastatusicon=gray
 
-"" Set Handlers
-sethandler a:vim
-"sethandler <C-A> a:ide  " select all
-"sethandler <C-C> a:ide  " copy
-"sethandler <C-V> a:ide  " paste
-"sethandler <C-F> a:ide  " find
+" 中英文自动换
+" set keep-english-in-normal
+set keep-english-in-normal-and-restore-in-insert
+let context_aware = 1 
+
+"
+" "" Set Handler
+" "sethandler a:vim
+" sethandler <C-A> a:ide  " select all
+" "sethandler <C-C> a:ide  " copy
+" "sethandler <C-V> a:ide  " paste
+" "sethandler <C-F> a:ide  " find
+"
+"
+" """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" " Non Leader keymaps
+" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"
+" Escape keymaps
+inoremap jk <Esc>
+inoremap jj <Esc>
+
+" Keep visual selection
+vnoremap < <gv
+vnoremap > >gv
+
+" Search word under cursor
+nmap gw *N
+
+" Make page forward/backward friendly
+nmap <C-d> <C-d>zz
+nmap <C-u> <C-u>zz
+
+" LSP
+map gd <Action>(GotoDeclaration)
+map gi <Action>(GotoImplementation)
+
+" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" " Leader keymaps
+" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" default leader key is \
+let mapleader = " "
+
+" Quit
+" nmap <leader>qq <cmd>qa<CR>
+
+" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Legacy Config
+" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+
+"
+" " Move to window using the <ctrl> hjkl keys
+" nnoremap <C-h> <C-w>h
+" nnoremap <C-j> <C-w>j
+" nnoremap <C-k> <C-w>k
+" nnoremap <C-l> <C-w>l
+"
+" " Resize window using <ctrl> arrow keys
+" nnoremap <C-Up> :resize +2<CR>
+" nnoremap <C-Down> :resize -2<CR>
+" nnoremap <C-Left> :vertical resize -2<CR>
+" nnoremap <C-Right> :vertical resize +2<CR>
+"
+" " Move Lines
+" nnoremap <A-j> :m .+1<CR>==
+" nnoremap <A-k> :m .-2<CR>==
+" inoremap <A-j> <Esc>:m .+1<CR>==gi
+" inoremap <A-k> <Esc>:m .-2<CR>==gi
+" vnoremap <A-j> :m '>+1<CR>gv=gv
+" vnoremap <A-k> :m '<-2<CR>gv=gv
+"
+" " Prev/Next buffer keymaps
+" nnoremap <S-h> :bprevious<CR>
+" nnoremap <S-l> :bnext<CR>
+" nnoremap [b :bprevious<CR>
+" nnoremap ]b :bnext<CR>
+"
+" " Switch to Other Buffer keymaps
+" nnoremap <leader>bb :e #<CR>
+" nnoremap <leader>` :e #<CR>
+"
+"
+" " Windows
+" nmap <leader>ww <C-W>p
+"
+"
+"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Actions
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Goto
+" map gu <Action>(GotoSuperMethod)
+" map gt <Action>(GotoTest)
+" map gj <Action>(GotoNextError)
+" map gk <Action>(GotoPreviousError)
+"
+" map gh <Action>(QuickJavaDoc)
+" map gH <Action>(QuickActions)
+" map gr <Action>(RefactoringMenu)
+" map ga <Action>(ShowIntentionActions)
+" map gf <Action>(ShowUsages)
+" map gF <Action>(FindUsages)
+
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugins
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ build in plugins ----------------------------------------
-Plug 'preservim/nerdtree'
-Plug 'machakann/vim-highlightedyank'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-commentary'
+" Plug 'preservim/nerdtree'
+" Plug 'machakann/vim-highlightedyank'
+" Plug 'tpope/vim-surround'
+" Plug 'tpope/vim-commentary'
 
 """ external plugins(install required) ------------------------
 "Plug 'easymotion/vim-easymotion'
-set which-key
-set keep-english-in-normal
+" set which-key
+" set keep-english-in-normal
 """ Plugin Settings: NERDTree ---------------------------------
 " Focus project window
 
@@ -58,15 +178,15 @@ set keep-english-in-normal
 " map ,,F <Plug>(easymotion-F)
 " map ,,t <Plug>(easymotion-t)
 " map ,,T <Plug>(easymotion-T)
-" 
+"
 " """ Plugin Settings: Which Key Config -------------------------
 " set notimeout
 " " increase the timeoutlen (default: 1000), don't add space around the equal sign =
 " set timeoutlen=5000
-" 
+"
 " " show vim actions
 " let g:WhichKey_ShowVimActions = "true"
-" 
+"
 " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " " => Actions
 " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -78,29 +198,29 @@ set keep-english-in-normal
 " map <leader>` <Action>(RecentFiles)
 " map <leader><space> <Action>(GotoFile)
 " noremap <leader> e :NERDTreeToggle <CR>
-" 
+"
 " " Keep visual selection
 " vnoremap < <gv
 " vnoremap > >gv
-" 
+"
 " " move to window using the <ctrl> hjkl keys
 " map <c-h> <c-w>h
 " map <C-j> <C-w>j
 " map <C-k> <C-w>k
 " map <C-l> <C-w>l
-" 
-" 
+"
+"
 " " Buffer
 " map <S-h> <Action>(PreviousTab)
 " map <S-l> <Action>(NextTab)
-" 
+"
 " " no highlight
 " map <esc> :noh<cr><esc>
-" 
+"
 " " select work under cursor
 " map gw *N
-" 
-" 
+"
+"
 " """""""""""""""""""""""""""""""""""""Buffer,Tab,Window""""""""""""""""""""""""""""""""""""""
 " let g:WhichKeyDesc_buffer = "<leader>b buffer"
 " map <leader>bb <Action>(RecentFiles)
@@ -108,8 +228,8 @@ set keep-english-in-normal
 " map <leader>bD <Action>(CloseContent)
 " map <leader>bp <Action>(PinActiveEditorTab)
 " map <leader>bP <Action>(CloseAllUnpinnedEditors)
-" 
-" 
+"
+"
 " " Resize window using <ctrl> arrow keys (NOT SUPPORTED YET)
 " """"""""""""""""""""""""""""""""""""""Search(s)""""""""""""""""""""""""""""""""""""""
 " let g:WhichKeyDesc_search = "<leader>s search"
@@ -121,8 +241,8 @@ set keep-english-in-normal
 " map <leader>ss <Action>(GotoSymbol)
 " map <leader>st <Action>(ActivateTODOToolWindow)
 " map <leader>sn <Action>(ActivateNotificationsToolWindow)
-" 
-" 
+"
+"
 " """"""""""""""""""""""""""""""""""""""Code(c)""""""""""""""""""""""""""""""""""""""
 " let g:WhichKeyDesc_code = "<leader>c code"
 " map <leader>ca <Action>(ShowIntentionActions)
@@ -137,7 +257,7 @@ set keep-english-in-normal
 " "
 " "" Show hover doc
 " "map <leader>ch <Action>(ShowErrorDescription)
-" 
+"
 " """"""""""""""""""""""""""""""""""""""refactor(r)""""""""""""""""""""""""""""""""""""""
 " let g:WhichKeyDesc_refactory = "<leader>r refactory"
 " map <leader>rr <Action>(Refactorings.QuickListPopupAction)
@@ -149,7 +269,7 @@ set keep-english-in-normal
 " map <leader>rc <Action>(IntroduceConstant)
 " map <leader>rp <Action>(IntroduceParameter)
 " map <leader>rf <Action>(IntroduceField)
-" 
+"
 " """"""""""""""""""""""""""""""""""""""find/find(f)""""""""""""""""""""""""""""""""""""""
 " let g:WhichKeyDesc_find_file = "<leader>f find/file"
 " map <leader>fb <Action>(RecentFiles)
@@ -158,31 +278,31 @@ set keep-english-in-normal
 " map <leader>fg <Action>(FindInPath)
 " map <leader>fn <Action>(NewFile)
 " map <leader>ft <action>(ActivateTerminalToolWindow)
-" 
+"
 " """"""""""""""""""""""""""""""""""""""git(g)""""""""""""""""""""""""""""""""""""""
 " let g:WhichKeyDesc_git = "<leader>g git"
 " map <leader>gc <Action>(CheckinProject)
 " map <leader>gg <Action>(Vcs.QuickListPopupAction)
-" 
+"
 " " git hunk not supported yet
 " "map <leader>gh <Action>()
 " """"""""""""""""""""""""""""""""""""""quit/session(q)""""""""""""""""""""""""""""""""""""""
 " let g:WhichKeyDesc_quit_and_session = "<leader>q quit/session"
 " map <leader>qq <Action>(CloseAllEditors)
-" 
+"
 " """"""""""""""""""""""""""""""""""""""ui(u)""""""""""""""""""""""""""""""""""""""
 " let g:WhichKeyDesc_git = "<leader>u ui"
 " map <leader>uw <Action>(EditorToggleUseSoftWraps)
-" 
-" 
+"
+"
 " """"""""""""""""""""""""""""""""""""""diagnostics/quickfix""""""""""""""""""""""""""""""""""""""
 " let g:WhichKeyDesc_diagnostics_and_quickfix = "<leader>x diagnostics/quickfix"
 " map <leader>xq <Action>(ActivateProblemsViewToolWindow)
 " map <leader>xt <Action>(ActivateTODOToolWindow)
 " map <leader>xx <Action>(ActivateProblemsViewToolWindow)
-" 
-" 
-" 
+"
+"
+"
 " """"""""""""""""""""""""""""""""""""""Debug(d)""""""""""""""""""""""""""""""""""""""
 " "let g:WhichKeyDesc_debug = "<leader>d Debug"
 " "map <leader>dd <Action>(Debug)
@@ -199,11 +319,11 @@ set keep-english-in-normal
 " "
 " "map <C-b> <Action>(CompileDirty)
 " "imap <C-b> <Action>(CompileDirty)
-" 
-" 
+"
+"
 " """"""""""""""""""""""""""""""""""""""Navigation(g)""""""""""""""""""""""""""""""""""""""
 " "let g:WhichKeyDesc_goto = "g goto"
-" 
+"
 " map gd <Action>(GotoDeclarationOnly)
 " map gf <Action>(FileStructurePopup)
 " map gg <Action>(JumpToLastChange)
@@ -215,7 +335,7 @@ set keep-english-in-normal
 " map K <Action>(ParameterInfo)
 " " gK Signature Help
 " " <c-K> for Signature Help of insert mode
-" 
+"
 " """"""""""""""""""""""""""""""""""""""Next(])""""""""""""""""""""""""""""""""""""""
 " let g:WhichKeyDesc_next = "] next"
 " map ]b <Action>(NextTab)
@@ -227,20 +347,20 @@ set keep-english-in-normal
 " " ]] Next Reference
 " " ]m Method End
 " " ]M Method Start
-" 
+"
 " """"""""""""""""""""""""""""""""""""""Previous([)""""""""""""""""""""""""""""""""""""""
 " let g:WhichKeyDesc_prevoius = "[ previous"
 " map [b <Action>(PreviousTab)
-" 
-" 
+"
+"
 " " Alt+j/k for autocompletion popup
 " "inoremap <A-j> <C-n>                               " use <UP>
 " "inoremap <A-k> <C-p>                               " use <DOWN>
-" 
+"
 " """"""""""""""""""""""""""""""""""""""TBD""""""""""""""""""""""""""""""""""""""
 " "map H <Action>(ShowErrorDescription)
 " "map <leader><leader> <Action>(SearchEverywhere)
-" 
+"
 " " Zen mode
 " "map <leader>zz <Action>(TogglePresentationMode)
 
