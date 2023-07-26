@@ -169,19 +169,71 @@ function nvims() {
 # git clone https://github.com/LazyVim/starter ~/.config/lazy-vim
 # git clone --depth 1 https://github.com/LunarVim/LunarVim ~/.config/lunar-vim
 # git clone --depth 1 https://github.com/NvChad/NvChad ~/.config/nvchad-vim
+
+
 #################
 # FZF 
 #################
-# go to folder from under user home
-alias g='cd $(fd -t d . $HOME| fzf)'
-# find file under user home 
-alias f='$(fd -t f . $HOME| fzf)'
 # alt+c to change folder
 export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'"
 # ctrl + t to search file
-export FZF_CTRL_T_OPTS="--preview '(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'"
+export FZF_CTRL_T_OPTS="--preview '(highlight -O ansi -l {} 2> /dev/null || bat {} || tree -C {}) 2> /dev/null | head -200'"
 # search history
 export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap --bind '?:toggle-preview'"
+
+# Function to open a file using fzf and vim
+fv() {
+  local file
+  file=$(fzf --preview "bat --style=numbers --color=always {}" --preview-window=right:70%:wrap --query="$1" --select-1 --exit-0)
+  if [[ -n "$file" ]]; then
+    nvim "$file"
+  fi
+}
+
+# Function to search for files under the home directory and preview with fzf
+ff() {
+  local file
+  file=$(find "$HOME" -type f | fzf --preview "bat --style=numbers --color=always {}" --preview-window=right:70%:wrap --query="$1" --select-1 --exit-0)
+  if [[ -n "$file" ]]; then
+    bat --style=numbers --color=always "$file" | less -R
+  fi
+}
+
+
+# Function to search file content with rg and fzf
+frg() {
+  local query="$1"
+  if [[ -z "$query" ]]; then
+    echo "Usage: ff_rg <search_term>"
+    return 1
+  fi
+  rg --color=always --line-number --no-heading "$query" | fzf --ansi --preview "echo {} | awk -F: '{print \"bat --style=numbers --color=always --highlight-line \" \$2 \" \" \$1 }' | sh" --preview-window=right:70%:wrap --query="$2" --select-1 --exit-0
+}
+
+# jt - Function to select Java test case under the current Maven project using fzf
+jt() {
+  local java_test_files=$(find ./src/test/java -name "*.java" | fzf --multi --preview "bat --style=numbers --color=always {}")
+
+  if [[ -n "$java_test_files" ]]; then
+    local mvn_test_command="mvn test -Dtest="
+    local test_classes=""
+
+    while IFS= read -r line; do
+      local test_class=$(echo "$line" | awk -F "/" '{print $NF}' | sed 's/.java//')
+      test_classes+="$test_class,"
+    done <<< "$java_test_files"
+
+    # Remove the trailing comma
+    test_classes="${test_classes%,}"
+
+    echo "Running Maven tests for the following classes:"
+    echo "$java_test_files"
+    echo
+
+    # Execute the mvn test command
+    eval "$mvn_test_command$test_classes"
+  fi
+}
 
 # remove above if cuda not match
 export CUDA_HOME=/usr/local/cuda
