@@ -210,7 +210,6 @@ frg() {
   rg --color=always --line-number --no-heading "$query" | fzf --ansi --preview "echo {} | awk -F: '{print \"bat --style=numbers --color=always --highlight-line \" \$2 \" \" \$1 }' | sh" --preview-window=right:70%:wrap --query="$2" --select-1 --exit-0
 }
 
-# jt - Function to select Java test case under the current Maven project using fzf
 jt() {
   local java_test_files=$(find ./src/test/java -name "*.java" | fzf --multi --preview "bat --style=numbers --color=always {}")
 
@@ -219,15 +218,18 @@ jt() {
     local test_classes=""
 
     while IFS= read -r line; do
-      local test_class=$(echo "$line" | awk -F "/" '{print $NF}' | sed 's/.java//')
-      test_classes+="$test_class,"
+      local package_path=$(dirname "${line#./src/test/java/}")
+      local package_name=${package_path//\//.}
+      local class_name=$(basename "$line" .java)
+      local fully_qualified_name="$package_name.$class_name"
+      test_classes+="$fully_qualified_name,"
     done <<< "$java_test_files"
 
     # Remove the trailing comma
     test_classes="${test_classes%,}"
 
     echo "Running Maven tests for the following classes:"
-    echo "$java_test_files"
+    echo "$mvn_test_command$test_classes"
     echo
 
     # Execute the mvn test command
