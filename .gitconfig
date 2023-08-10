@@ -12,7 +12,8 @@
 [core]
   editor = vim
   pager = delta
-
+	quotePath = false
+  
 [interactive]
   diffFilter = delta --color-only
 
