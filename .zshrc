@@ -210,6 +210,7 @@ frg() {
   rg --color=always --line-number --no-heading "$query" | fzf --ansi --preview "echo {} | awk -F: '{print \"bat --style=numbers --color=always --highlight-line \" \$2 \" \" \$1 }' | sh" --preview-window=right:70%:wrap --query="$2" --select-1 --exit-0
 }
 
+# Function to run java test cases
 jt() {
   local java_test_files=$(find ./src/test/java -name "*.java" | fzf --multi --preview "bat --style=numbers --color=always {}")
 
