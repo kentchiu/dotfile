@@ -85,7 +85,6 @@ plugins=(
   fzf
   git
   poetry
-  pyenv
   zsh-autosuggestions
   z
 )
