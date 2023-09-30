@@ -171,6 +171,7 @@ function nvims() {
 # git clone --depth 1 https://github.com/LunarVim/LunarVim ~/.config/lunar-vim
 # git clone --depth 1 https://github.com/NvChad/NvChad ~/.config/nvchad-vim
 
+alias ls="exa"
 
 #################
 # FZF 
