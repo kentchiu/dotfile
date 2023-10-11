@@ -32,6 +32,7 @@ linux/maxos
 ln -sf ~/.config/dotfile/.gitconfig ~/.gitconfig
 ln -sf ~/.config/dotfile/.ideavimrc ~/.ideavimrc
 ln -sf ~/.config/dotfile/.tmux.conf ~/.tmux.conf
+ln -sf ~/.config/dotfile/.wezterm.lua ~/.wezterm.lua
 ln -sf ~/.config/dotfile/.vimrc ~/.vimrc
 ln -sf ~/.config/dotfile/.zshrc ~/.zshrc
 ln -sf ~/.config/dotfile/.lazygit-config ~/config/lazygit/config.yml
@@ -52,6 +53,7 @@ Open powershell with administrator privileges
 ```powershell
 New-Item -ItemType SymbolicLink -Path "$env:userprofile\.gitconfig" -Target "$env:userprofile\dev\dotfile\.gitconfig" -Force
 New-Item -ItemType SymbolicLink -Path "$env:userprofile\.ideavimrc" -Target "$env:userprofile\dev\dotfile\.ideavimrc" -Force
+New-Item -ItemType SymbolicLink -Path "$env:userprofile\.wezterm.lua" -Target "$env:userprofile\dev\dotfile\.wezterm.lua" -Force
 ```
 
 
