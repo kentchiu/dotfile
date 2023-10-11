@@ -82,10 +82,11 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git
-  zsh-autosuggestions
-  poetry
   fzf
+  git
+  poetry
+  zsh-autosuggestions
+  z
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -170,6 +171,7 @@ function nvims() {
 # git clone --depth 1 https://github.com/LunarVim/LunarVim ~/.config/lunar-vim
 # git clone --depth 1 https://github.com/NvChad/NvChad ~/.config/nvchad-vim
 
+alias ls="exa"
 
 #################
 # FZF 
@@ -210,6 +212,7 @@ frg() {
   rg --color=always --line-number --no-heading "$query" | fzf --ansi --preview "echo {} | awk -F: '{print \"bat --style=numbers --color=always --highlight-line \" \$2 \" \" \$1 }' | sh" --preview-window=right:70%:wrap --query="$2" --select-1 --exit-0
 }
 
+# Function to run java test cases
 jt() {
   local java_test_files=$(find ./src/test/java -name "*.java" | fzf --multi --preview "bat --style=numbers --color=always {}")
 
@@ -241,3 +244,6 @@ jt() {
 export CUDA_HOME=/usr/local/cuda
 export PATH=$PATH:$CUDA_HOME/bin
 export LD_LIBRARY_PATH=/usr/local/cuda-12.1/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}:/usr/lib/wsl/lib
+
+## this command is use to clean screen when tmux restore the session
+clear
