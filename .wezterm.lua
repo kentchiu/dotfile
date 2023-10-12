@@ -9,7 +9,6 @@ if wezterm.config_builder then
 end
 
 -- This is where you actually apply your config choices
-
 config.default_domain = 'WSL:Ubuntu'
 
 config.font = wezterm.font 'JetBrains Mono'
@@ -19,9 +18,12 @@ config.font = wezterm.font 'JetBrains Mono'
 -- It will occupy the right window padding space.
 -- If right padding is set to 0 then it will be increased
 -- to a single cell width
+config.check_for_updates = false
 config.enable_scroll_bar = true
 config.audible_bell = 'Disabled'
 config.window_close_confirmation = 'NeverPrompt'
+
+--config.font_size = 10.0
 
 -- theme
 --config.color_scheme = 'JetBrains Darcula'
@@ -29,4 +31,10 @@ config.window_close_confirmation = 'NeverPrompt'
 -- config.color_scheme = 'One Half Black (Gogh)'
 -- config.color_scheme = 'Orangish (terminal.sexy)'
 -- config.color_scheme = 'Darcula (base16)'
+
+
+-- if wezterm.target_triple == "x86_64-pc-windows-msvc" then
+-- else
+-- end
+
 return config
