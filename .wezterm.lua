@@ -11,8 +11,13 @@ end
 -- This is where you actually apply your config choices
 config.default_domain = 'WSL:Ubuntu'
 
-config.font = wezterm.font 'JetBrains Mono'
+--config.font = wezterm.font 'JetBrains Mono'
 -- config.font =  wezterm.font('JetBrains Mono', { weight = 'Bold', italic = true })
+--config.font =  wezterm.font('JetBrains Mono', { weight = 'Bold', italic = true })
+config.font = wezterm.font_with_fallback({
+  'JetBrains Mono',
+  { family = 'Symbols Nerd Font Mono', scale =0.75}
+})
 
 -- Enable the scrollbar.
 -- It will occupy the right window padding space.
