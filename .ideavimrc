@@ -70,7 +70,6 @@ let context_aware = 1
 "
 " Escape keymaps
 inoremap jk <Esc>
-inoremap jj <Esc>
 
 " Keep visual selection
 vnoremap < <gv
@@ -105,7 +104,7 @@ let mapleader = " "
 " NERDTree toggle
 nnoremap <leader>e :NERDTreeToggle<CR>
 
-" top level
+" terminal
 map <leader>% <Action>(SplitVertically)
 map <leader>- <Action>(SplitHorizontally)
 map <leader>/ <Action>(FindInPath)
@@ -121,8 +120,15 @@ map <leader>cr <Action>(RenameElement)
 map <leader>fr <Action>(RecentFiles)
 map <leader>ff <Action>(GotoFile)
 
+" Test
+map <leader>tt <Action>(DebugClass)
+
+
 " Quit
 " nmap <leader>qq <cmd>qa<CR>
+
+
+
 
 " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Legacy Config
@@ -133,10 +139,10 @@ map <leader>ff <Action>(GotoFile)
 
 "
 " Move to window using the <ctrl> hjkl keys
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
+" nnoremap <C-h> <C-w>h
+" nnoremap <C-j> <C-w>j
+" nnoremap <C-k> <C-w>k
+" nnoremap <C-l> <C-w>l
 "
 " " Resize window using <ctrl> arrow keys
 " nnoremap <C-Up> :resize +2<CR>
