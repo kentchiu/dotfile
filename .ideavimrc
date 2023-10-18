@@ -11,7 +11,7 @@ set easymotion " plugin install need
 " which key "
 set which-key " plugin install need
 set notimeout
-let g:WhichKey_FontSize = 16
+let g:WhichKey_FontSize = 12
 " set commentary
 " " IdeaVimExtension 输入法切换
 " set keep-english-in-normal-and-restore-in-insert
@@ -70,7 +70,6 @@ let context_aware = 1
 "
 " Escape keymaps
 inoremap jk <Esc>
-inoremap jj <Esc>
 
 " Keep visual selection
 vnoremap < <gv
@@ -121,6 +120,10 @@ map <leader>cr <Action>(RenameElement)
 map <leader>fr <Action>(RecentFiles)
 map <leader>ff <Action>(GotoFile)
 
+" Test
+map <leader>tt <Action>(DebugClass)
+
+
 " Quit
 " nmap <leader>qq <cmd>qa<CR>
 
@@ -133,10 +136,10 @@ map <leader>ff <Action>(GotoFile)
 
 "
 " Move to window using the <ctrl> hjkl keys
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
+" nnoremap <C-h> <C-w>h
+" nnoremap <C-j> <C-w>j
+" nnoremap <C-k> <C-w>k
+" nnoremap <C-l> <C-w>l
 "
 " " Resize window using <ctrl> arrow keys
 " nnoremap <C-Up> :resize +2<CR>
