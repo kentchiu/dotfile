@@ -1,3 +1,4 @@
+" NOTE: use esc to back to editor when in other window
 
 " Do incremental searching.
 " set incsearch
@@ -25,8 +26,8 @@ set NERDTree
 set clipboard=unnamed,unnamedplus " Use te OS clipboard by default
 set ignorecase " Ignore case when searching
 set number " print the line number in front of each line
-set relativenumber " show the line number relative to the line with the cursor
-set scrolloff=7 " Set scrolloff 7 lines to the cursor - when moving vertically using j/k
+" set relativenumber " show the line number relative to the line with the cursor
+" set scrolloff=7 " Set scrolloff 7 lines to the cursor - when moving vertically using j/k
 " set showcmd " show (partial) command in the status bar
 " set smartcase " When searching try to be smart about cases\
 
@@ -91,6 +92,7 @@ nmap gt <Action>(GotoTypeDeclaration)
 
 " Terminal
 map <C-\> <action>(ActivateTerminalToolWindow)
+
 " Cancel search highlight
 map <ESC> :noh<CR>
 
@@ -127,8 +129,20 @@ map <leader>tt <Action>(DebugClass)
 " Quit
 " nmap <leader>qq <cmd>qa<CR>
 
+" playground
+
+map <C-o> <Action>(JumpToLastChange)
+map <leader>rr <Action>(Refactorings.QuickListPopupAction)
+map gc <Action>(CommentByLineComment)
+
+map <leader>da <Action>(Debugger.RemoveAllBreakpoints)
+map <leader>dA <Action>(ViewBreakpoints)
+map <leader>db <Action>(ToggleLineBreakpoint)
+map <leader>dB <Action>(AddConditionalBreakpoint)
+map <leader>dB <Action>(RunToCursor)
 
 
+map <leader>ff <Action>(GotoFile)
 
 " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Legacy Config
