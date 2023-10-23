@@ -12,7 +12,7 @@ set easymotion " plugin install need
 " which key "
 set which-key " plugin install need
 set notimeout
-let g:WhichKey_FontSize = 16
+let g:WhichKey_FontSize = 12
 " set commentary
 " " IdeaVimExtension 输入法切换
 " set keep-english-in-normal-and-restore-in-insert
