@@ -2,7 +2,6 @@
   email = kent.cwg@gmail.com
   name = Kent Chiu
 
-
 [alias]
   st = status
   ci = commit
@@ -51,3 +50,5 @@
 	process = git-lfs filter-process
 [credential]
 	helper = store
+[http]
+  sslverify = false
