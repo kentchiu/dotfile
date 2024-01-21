@@ -28,6 +28,7 @@
 
 linux/maxos
 
+
 ```bash
 ln -sf ~/.config/dotfile/.gitconfig ~/.gitconfig
 ln -sf ~/.config/dotfile/.ideavimrc ~/.ideavimrc
@@ -37,6 +38,13 @@ ln -sf ~/.config/dotfile/.vimrc ~/.vimrc
 ln -sf ~/.config/dotfile/.zshrc ~/.zshrc
 ln -sf ~/.config/dotfile/.lazygit-config ~/config/lazygit/config.yml
 ```
+
+install tmux plugin manager
+
+```bash
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+tmux source ~/.tmux.conf
+````
 
 nvim
 
