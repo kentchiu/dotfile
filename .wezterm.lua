@@ -45,13 +45,6 @@ config.default_workspace = "main"
 -- It will occupy the right window padding space.
 -- If right padding is set to 0 then it will be increased
 -- to a single cell width
-config.check_for_updates = false
-config.audible_bell = 'Disabled'
-config.window_background_opacity = 0.9
-config.window_decorations = "RESIZE"
-config.window_close_confirmation = "AlwaysPrompt"
-config.scrollback_lines = 3000
-config.default_workspace = "main"
 
 --config.font_size = 10.0
 
@@ -73,7 +66,7 @@ config.inactive_pane_hsb = {
 }
 
 -- Keys
-config.leader = { key = "a", mods = "CTRL", timeout_milliseconds = 1000 }
+config.leader = { key = "a", mods = "CTRL", timeout_milliseconds = 3000 }
 config.keys = {
   -- Send C-a when pressing C-a twice
   { key = "a",          mods = "LEADER|CTRL", action = act.SendKey { key = "a", mods = "CTRL" } },
