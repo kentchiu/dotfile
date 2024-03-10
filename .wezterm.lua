@@ -8,7 +8,7 @@
 
 local wezterm = require("wezterm")
 local act = wezterm.action
-
+local mux = wezterm.mux
 
 local config = {}
 
@@ -19,7 +19,7 @@ if wezterm.config_builder then
 end
 
 -- This is where you actually apply your config choices
--- config.default_domain = 'WSL:Ubuntu'
+config.default_domain = 'WSL:Arch'
 
 --config.font = wezterm.font 'JetBrains Mono'
 -- config.font =  wezterm.font('JetBrains Mono', { weight = 'Bold', italic = true })
@@ -40,7 +40,7 @@ config.window_background_opacity = 0.9
 config.window_decorations = "RESIZE"
 config.window_close_confirmation = "AlwaysPrompt"
 config.scrollback_lines = 3000
-config.default_workspace = "main"
+-- config.default_workspace = "main"
 -- Enable the scrollbar.
 -- It will occupy the right window padding space.
 -- If right padding is set to 0 then it will be increased
@@ -89,9 +89,9 @@ config.keys = {
 
   -- Tab keybindings
   { key = "t",          mods = "LEADER",      action = act.SpawnTab("CurrentPaneDomain") },
-  { key = "[",          mods = "LEADER",      action = act.ActivateTabRelative(-1) },
-  { key = "]",          mods = "LEADER",      action = act.ActivateTabRelative(1) },
-  { key = "n",          mods = "LEADER",      action = act.ShowTabNavigator },
+  { key = "n",          mods = "LEADER",      action = act.ActivateTabRelative(-1) },
+  { key = "p",          mods = "LEADER",      action = act.ActivateTabRelative(1) },
+  { key = "l",          mods = "LEADER",      action = act.ShowTabNavigator },
   {
     key = "e",
     mods = "LEADER",
@@ -206,13 +206,13 @@ wezterm.on("update-status", function(window, pane)
     -- Wezterm has a built-in nerd fonts
     -- https://wezfurlong.org/wezterm/config/lua/wezterm/nerdfonts.html
     { Text = wezterm.nerdfonts.md_folder .. "  " .. cwd },
-    { Text = " | " },
-    { Foreground = { Color = "#e0af68" } },
-    { Text = wezterm.nerdfonts.fa_code .. "  " .. cmd },
-    "ResetAttributes",
-    { Text = " | " },
-    { Text = wezterm.nerdfonts.md_clock .. "  " .. time },
-    { Text = "  " },
+    -- { Text = " | " },
+    -- { Foreground = { Color = "#e0af68" } },
+    -- { Text = wezterm.nerdfonts.fa_code .. "  " .. cmd },
+    -- "ResetAttributes",
+    -- { Text = " | " },
+    -- { Text = wezterm.nerdfonts.md_clock .. "  " .. time },
+    -- { Text = "  " },
   }))
 end)
 
@@ -226,4 +226,74 @@ config.window_padding = {
 
 }
 --]]
+
+
+function create_kent_worksapce() 
+  local tab, pane,  window = mux.spawn_window {
+    workspace = 'KENT',
+    cwd = '/home/kent/.config/nvim',
+  }
+
+  tab:set_title 'PDE'
+
+  local tab2, pane,  window =  window:spawn_tab {
+    cwd = '/home/kent/.config/dotfile',   
+  }
+
+  tab2:set_title 'dotfile'
+end
+
+
+function create_bw_worksapce() 
+  local tab, pane,  window = mux.spawn_window {
+    workspace = 'BW',
+    cwd = '/home/kent/dev/idevice/idevice/api',
+  }
+
+  pane:split{direction = 'Bottom'}
+
+  tab:set_title 'API'
+
+  local tab2, pane,  window =  window:spawn_tab {
+    cwd = '/home/kent/dev/idevice/idevice/web',   
+  }
+
+  tab2:set_title 'WEB'
+  pane:split{direction = 'Bottom'}
+ 
+
+
+
+end
+
+
+function create_nices_worksapce() 
+  local tab, pane,  window = mux.spawn_window {
+    workspace = 'NICES',
+    cwd = '/home/kent/dev/nices/combat_information_company_nices_docker',
+  }
+
+  tab:set_title 'docker'
+
+  local tab2, pane,  window =  window:spawn_tab {
+    cwd = '/home/kent/dev/nices/view360-doc',   
+  }
+
+  tab2:set_title 'doc'
+end
+
+
+wezterm.on('gui-startup', function(cmd)
+  local args = {}
+  if cmd then
+    args = cmd.args
+  end
+
+  create_kent_worksapce()
+  create_bw_worksapce()
+  create_nices_worksapce()
+
+  mux.set_active_workspace 'BW'
+end)
+
 return config
