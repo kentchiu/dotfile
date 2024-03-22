@@ -172,8 +172,11 @@ function nvims() {
 # git clone --depth 1 https://github.com/LunarVim/LunarVim ~/.config/lunar-vim
 # git clone --depth 1 https://github.com/NvChad/NvChad ~/.config/nvchad-vim
 
-alias ls="exa"
-
+# alias ls="exa"
+alias ls='exa --grid --color auto --icons --sort=type'
+alias ll='exa --long --color always --icons --sort=type'
+alias la='exa --grid --all --color auto --icons --sort=type'
+alias lla='exa --long --all --color auto --icons --sort=type'
 #################
 # FZF 
 #################
@@ -210,34 +213,6 @@ frg() {
     return 1
   fi
   rg --color=always --line-number --no-heading "$query" | fzf --ansi --preview "echo {} | awk -F: '{print \"bat --style=numbers --color=always --highlight-line \" \$2 \" \" \$1 }' | sh" --preview-window=right:70%:wrap --query="$2" --select-1 --exit-0
-}
-
-# Function to run java test cases
-jt() {
-  local java_test_files=$(find ./src/test/java -name "*.java" | fzf --multi --preview "bat --style=numbers --color=always {}")
-
-  if [[ -n "$java_test_files" ]]; then
-    local mvn_test_command="mvn test -Dtest="
-    local test_classes=""
-
-    while IFS= read -r line; do
-      local package_path=$(dirname "${line#./src/test/java/}")
-      local package_name=${package_path//\//.}
-      local class_name=$(basename "$line" .java)
-      local fully_qualified_name="$package_name.$class_name"
-      test_classes+="$fully_qualified_name,"
-    done <<< "$java_test_files"
-
-    # Remove the trailing comma
-    test_classes="${test_classes%,}"
-
-    echo "Running Maven tests for the following classes:"
-    echo "$mvn_test_command$test_classes"
-    echo
-
-    # Execute the mvn test command
-    eval "$mvn_test_command$test_classes"
-  fi
 }
 
 
