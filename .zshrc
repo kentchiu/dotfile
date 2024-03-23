@@ -177,6 +177,10 @@ alias ls='exa --grid --color auto --icons --sort=type'
 alias ll='exa --long --color always --icons --sort=type'
 alias la='exa --grid --all --color auto --icons --sort=type'
 alias lla='exa --long --all --color auto --icons --sort=type'
+
+
+alias difft="GIT_EXTERNAL_DIFF=difft git diff"
+alias dlog="GIT_EXTERNAL_DIFF=difft git log -p --ext-diff $@;"
 #################
 # FZF 
 #################
