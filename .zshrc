@@ -146,12 +146,12 @@ export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
 # nvim
-alias vi='nvim'
+alias vi='~/download/nvim.appimage'
 
-alias nvim-astro='NVIM_APPNAME=astro-vim nvim'
-alias nvim-lazy='NVIM_APPNAME=lazy-vim nvim'
-alias nvim-Lunar='NVIM_APPNAME=lunar-vim nvim'
-alias nvim-nvchad='NVIM_APPNAME=nvchad-vim nvim'
+# alias nvim-astro='NVIM_APPNAME=astro-vim nvim'
+# alias nvim-lazy='NVIM_APPNAME=lazy-vim nvim'
+# alias nvim-Lunar='NVIM_APPNAME=lunar-vim nvim'
+# alias nvim-nvchad='NVIM_APPNAME=nvchad-vim nvim'
 
 function nvims() {
   items=('default' 'astro-vim' 'lazy-vim' 'Lunar-vim' 'nvchad-vim')
