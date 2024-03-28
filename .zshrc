@@ -147,30 +147,8 @@ export SDKMAN_DIR="$HOME/.sdkman"
 
 # nvim
 alias vi='~/download/nvim.appimage'
+alias nvim='~/download/nvim.appimage'
 
-# alias nvim-astro='NVIM_APPNAME=astro-vim nvim'
-# alias nvim-lazy='NVIM_APPNAME=lazy-vim nvim'
-# alias nvim-Lunar='NVIM_APPNAME=lunar-vim nvim'
-# alias nvim-nvchad='NVIM_APPNAME=nvchad-vim nvim'
-
-function nvims() {
-  items=('default' 'astro-vim' 'lazy-vim' 'Lunar-vim' 'nvchad-vim')
-  config=$(printf "%s
-" "${items[@]}" | fzf --prompt="v Neovim Config » " --height=50% --layout=reverse --border --exit-0)
-  if [[ -z $config ]]; then
-    echo "Nothing selected"
-    return O
-  elif [[ $config = "default" ]]; then
-    config=""
-  fi
-  NVIM_APPNAME=$config nvim $@
-}       
-
-# run this to install nvim disbutions
-# git clone --depth 1 https://github.com/AstroNvim/AstroNvim ~/.config/astro-vim
-# git clone https://github.com/LazyVim/starter ~/.config/lazy-vim
-# git clone --depth 1 https://github.com/LunarVim/LunarVim ~/.config/lunar-vim
-# git clone --depth 1 https://github.com/NvChad/NvChad ~/.config/nvchad-vim
 
 # alias ls="exa"
 alias ls='exa --grid --color auto --icons --sort=type'
@@ -178,7 +156,7 @@ alias ll='exa --long --color always --icons --sort=type'
 alias la='exa --grid --all --color auto --icons --sort=type'
 alias lla='exa --long --all --color auto --icons --sort=type'
 
-
+# difft
 alias difft="GIT_EXTERNAL_DIFF=difft git diff"
 alias dlog="GIT_EXTERNAL_DIFF=difft git log -p --ext-diff $@;"
 #################
