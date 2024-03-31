@@ -87,6 +87,7 @@ plugins=(
   poetry
   zsh-autosuggestions
   zoxide
+  z
 )
 
 source $ZSH/oh-my-zsh.sh
