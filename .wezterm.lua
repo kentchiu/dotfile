@@ -19,7 +19,7 @@ if wezterm.config_builder then
 end
 
 -- This is where you actually apply your config choices
-config.default_domain = 'WSL:Arch'
+-- config.default_domain = 'WSL:Arch'
 
 --config.font = wezterm.font 'JetBrains Mono'
 -- config.font =  wezterm.font('JetBrains Mono', { weight = 'Bold', italic = true })
@@ -148,7 +148,7 @@ config.key_tables = {
 
 -- Tab bar
 -- I don't like the look of "fancy" tab bar
-config.use_fancy_tab_bar = false
+config.use_fancy_tab_bar = true
 config.status_update_interval = 1000
 config.tab_bar_at_bottom = false
 wezterm.on("update-status", function(window, pane)
@@ -228,60 +228,53 @@ config.window_padding = {
 --]]
 
 
-function create_kent_worksapce() 
-  local tab, pane,  window = mux.spawn_window {
-    workspace = 'KENT',
-    cwd = '/home/kent/.config/nvim',
-  }
+-- function create_kent_worksapce()
+--   local tab, pane, window = mux.spawn_window {
+--     workspace = 'KENT',
+--     cwd = '/home/kent/.config/nvim',
+--   }
+--
+--   tab:set_title 'PDE'
+--
+--   local tab2, pane, window = window:spawn_tab {
+--     cwd = '/home/kent/.config/dotfile',
+--   }
+--
+--   tab2:set_title 'dotfile'
+-- end
 
-  tab:set_title 'PDE'
-
-  local tab2, pane,  window =  window:spawn_tab {
-    cwd = '/home/kent/.config/dotfile',   
-  }
-
-  tab2:set_title 'dotfile'
-end
-
-
-function create_bw_worksapce() 
-  local tab, pane,  window = mux.spawn_window {
-    workspace = 'BW',
-    cwd = '/home/kent/dev/idevice/idevice/api',
-  }
-
-  pane:split{direction = 'Bottom'}
-
-  tab:set_title 'API'
-
-  local tab2, pane,  window =  window:spawn_tab {
-    cwd = '/home/kent/dev/idevice/idevice/web',   
-  }
-
-  tab2:set_title 'WEB'
-  pane:split{direction = 'Bottom'}
- 
-
-
-
-end
-
-
-function create_nices_worksapce() 
-  local tab, pane,  window = mux.spawn_window {
-    workspace = 'NICES',
-    cwd = '/home/kent/dev/nices/combat_information_company_nices_docker',
-  }
-
-  tab:set_title 'docker'
-
-  local tab2, pane,  window =  window:spawn_tab {
-    cwd = '/home/kent/dev/nices/view360-doc',   
-  }
-
-  tab2:set_title 'doc'
-end
-
+-- function create_bw_worksapce()
+--   local tab, pane, window = mux.spawn_window {
+--     workspace = 'BW',
+--     cwd = '/home/kent/dev/idevice/idevice/api',
+--   }
+--
+--   pane:split { direction = 'Bottom' }
+--
+--   tab:set_title 'API'
+--
+--   local tab2, pane, window = window:spawn_tab {
+--     cwd = '/home/kent/dev/idevice/idevice/web',
+--   }
+--
+--   tab2:set_title 'WEB'
+--   pane:split { direction = 'Bottom' }
+-- end
+--
+-- function create_nices_worksapce()
+--   local tab, pane, window = mux.spawn_window {
+--     workspace = 'NICES',
+--     cwd = '/home/kent/dev/nices/combat_information_company_nices_docker',
+--   }
+--
+--   tab:set_title 'docker'
+--
+--   local tab2, pane, window = window:spawn_tab {
+--     cwd = '/home/kent/dev/nices/view360-doc',
+--   }
+--
+--   tab2:set_title 'doc'
+-- end
 
 wezterm.on('gui-startup', function(cmd)
   local args = {}
@@ -289,11 +282,11 @@ wezterm.on('gui-startup', function(cmd)
     args = cmd.args
   end
 
-  create_kent_worksapce()
-  create_bw_worksapce()
-  create_nices_worksapce()
-
-  mux.set_active_workspace 'BW'
+  -- create_kent_worksapce()
+  -- create_bw_worksapce()
+  -- create_nices_worksapce()
+  --
+  -- mux.set_active_workspace 'BW'
 end)
 
 return config
