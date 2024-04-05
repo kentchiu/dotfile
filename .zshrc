@@ -88,7 +88,6 @@ plugins=(
   zsh-autosuggestions
   zoxide
   z
-  nvm
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -127,10 +126,9 @@ source $ZSH/oh-my-zsh.sh
 ###
 
 # nvm
-# export NVM_DIR="$HOME/.nvm"
-# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 # [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-source /usr/share/nvm/init-nvm.sh
 
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"
@@ -149,7 +147,7 @@ export SDKMAN_DIR="$HOME/.sdkman"
 
 # nvim
 alias vi='~/download/nvim.appimage'
-alias nvim='~/download/nvim.appimage'
+# alias nvim='~/download/nvim.appimage'
 
 
 # alias ls="exa"
