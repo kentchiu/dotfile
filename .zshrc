@@ -88,6 +88,7 @@ plugins=(
   zsh-autosuggestions
   zoxide
   z
+  nvm
 )
 
 source $ZSH/oh-my-zsh.sh
