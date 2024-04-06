@@ -146,9 +146,9 @@ export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
 # nvim
-alias vi='~/download/nvim.appimage'
+# alias vi='~/download/nvim.appimage'
 # alias nvim='~/download/nvim.appimage'
-
+alias vi=nvim
 
 # alias ls="exa"
 alias ls='exa --grid --color auto --icons --sort=type'
