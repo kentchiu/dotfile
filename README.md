@@ -1,9 +1,8 @@
 # dotfile
 
-
 ## pre-installed
 
-- tmux 
+- tmux
   1. tpm plugin
 - git
   1. lazgit
@@ -12,7 +11,7 @@
   1. oh-my-zsh
   2. powerlevel10k
   3. nerdfont
-- idea 
+- idea
   1. vim plugin
 - nvim
   1. rg
@@ -21,22 +20,48 @@
   4. nerdfont
   5. fzf
 
+## install (arch linux)
+
+install paru for AUR package manager
+
+```bash
+sudo pacman -S --needed base-devel
+git clone https://aur.archlinux.org/paru.git
+cd paru
+makepkg -si
+```
+
+must have package
+
+```bash
+sudo pacman -Syu --noconfirm  \
+  && pacman -S --noconfirm git wget tmux gcc curl net-tools htop tree gcc ripgrep gdu less bat exa htop fd delta lazygit vim
+```
+
+best to have package
+
+```bash
+sudo pacman -S --noconfirm jq yq
+
+```
 
 ## usage
 
-> NOTE: BACKUP all of those files before `ln` command 
+> NOTE: BACKUP all of those files before `ln` command
 
 linux/maxos
 
-
 ```bash
+ln -sf ~/.config/dotfile/.zshrc ~/.zshrc
 ln -sf ~/.config/dotfile/.gitconfig ~/.gitconfig
-ln -sf ~/.config/dotfile/.ideavimrc ~/.ideavimrc
 ln -sf ~/.config/dotfile/.tmux.conf ~/.tmux.conf
+ln -sf ~/.config/dotfile/.lazygit-config ~/config/lazygit/config.yml
+
+ln -sf ~/.config/dotfile/.ideavimrc ~/.ideavimrc
 ln -sf ~/.config/dotfile/.wezterm.lua ~/.wezterm.lua
 ln -sf ~/.config/dotfile/.vimrc ~/.vimrc
-ln -sf ~/.config/dotfile/.zshrc ~/.zshrc
-ln -sf ~/.config/dotfile/.lazygit-config ~/config/lazygit/config.yml
+
+ln -sf ~/.config/dotfile/.zshrc2 ~/.zshrc
 ```
 
 install tmux plugin manager
@@ -44,7 +69,7 @@ install tmux plugin manager
 ```bash
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 tmux source ~/.tmux.conf
-````
+```
 
 nvim
 
@@ -52,7 +77,6 @@ nvim
 clone git@github.com:kentchiu/nvim-config.git ~/.config/nvim-config
 ln -sf ~/.config/nvim-config ~/config/nvim
 ```
-
 
 windows
 
@@ -63,5 +87,3 @@ New-Item -ItemType SymbolicLink -Path "$env:userprofile\.gitconfig" -Target "$en
 New-Item -ItemType SymbolicLink -Path "$env:userprofile\.ideavimrc" -Target "$env:userprofile\dev\dotfile\.ideavimrc" -Force
 New-Item -ItemType SymbolicLink -Path "$env:userprofile\.wezterm.lua" -Target "$env:userprofile\dev\dotfile\.wezterm.lua" -Force
 ```
-
-
