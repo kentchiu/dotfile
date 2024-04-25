@@ -38,7 +38,7 @@ must have package
 
 ```bash
 sudo pacman -Syu --noconfirm  \
-  && sudo pacman -S --noconfirm  wget net-tools htop tree gdu less bat exa htop vim
+  && sudo pacman -S --noconfirm  wget net-tools htop tree gdu less bat exa htop vim zoxide
 ```
 
 best to have package

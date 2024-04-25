@@ -87,7 +87,6 @@ plugins=(
   poetry
   zsh-autosuggestions
   zoxide
-  z
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -161,6 +160,10 @@ alias lla='exa --long --all --color auto --icons --sort=type'
 # difft
 alias difft="GIT_EXTERNAL_DIFF=difft git diff"
 alias dlog="GIT_EXTERNAL_DIFF=difft git log -p --ext-diff $@;"
+
+# zoxide 
+eval "$(zoxide init --cmd cd zsh)"
+
 #################
 # FZF 
 #################
