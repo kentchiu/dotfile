@@ -35,13 +35,13 @@ must have package
 
 ```bash
 sudo pacman -Syu --noconfirm  \
-  && pacman -S --noconfirm git wget tmux gcc curl net-tools htop tree gcc ripgrep gdu less bat exa htop fd delta lazygit vim
+  && sudo pacman -S --noconfirm git wget tmux gcc curl net-tools htop tree gcc ripgrep gdu less bat exa htop fd vim
 ```
 
 best to have package
 
 ```bash
-sudo pacman -S --noconfirm jq yq
+sudo pacman -S --noconfirm jq yq tldr
 
 ```
 
@@ -55,7 +55,7 @@ linux/maxos
 ln -sf ~/.config/dotfile/.zshrc ~/.zshrc
 ln -sf ~/.config/dotfile/.gitconfig ~/.gitconfig
 ln -sf ~/.config/dotfile/.tmux.conf ~/.tmux.conf
-ln -sf ~/.config/dotfile/.lazygit-config ~/config/lazygit/config.yml
+
 
 ln -sf ~/.config/dotfile/.ideavimrc ~/.ideavimrc
 ln -sf ~/.config/dotfile/.wezterm.lua ~/.wezterm.lua
@@ -78,7 +78,15 @@ clone git@github.com:kentchiu/nvim-config.git ~/.config/nvim-config
 ln -sf ~/.config/nvim-config ~/config/nvim
 ```
 
-windows
+git
+
+```bash
+sudo pacman -S lazygit git-delta
+mkdir -p ~/config/lazygit
+ln -sf ~/.config/dotfile/.lazygit-config ~/config/lazygit/config.yml
+```
+
+## windows
 
 Open powershell with administrator privileges
 
