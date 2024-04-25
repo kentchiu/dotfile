@@ -70,7 +70,7 @@ ln -sf ~/.config/dotfile/.lazygit-config ~/config/lazygit/config.yml
 
 ```bash
 sudo pacman -S --noconfirm neovim ripgrep fd fzf gcc curl
-clone git@github.com:kentchiu/nvim-config.git ~/.config/nvim-config
+git clone git@github.com:kentchiu/nvim-config.git ~/.config/nvim-config
 ln -sf ~/.config/nvim-config ~/config/nvim
 ```
 
@@ -90,7 +90,7 @@ ln -sf ~/.config/dotfile/.ideavimrc ~/.ideavimrc
 ln -sf ~/.config/dotfile/.wezterm.lua ~/.wezterm.lua
 ln -sf ~/.config/dotfile/.vimrc ~/.vimrc
 
-ln -sf ~/.config/dotfile/.zshrc2 ~/.zshrc
+ln -sf ~/.config/dotfile/.zshrc-2 ~/.zshrc
 ```
 
 ### windows
