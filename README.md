@@ -2,6 +2,7 @@
 
 ## pre-installed
 
+- paru (AUR package manager)
 - tmux
   1. tpm plugin
 - git
@@ -20,7 +21,7 @@
   4. nerdfont
   5. fzf
 
-## install (arch linux)
+### paru
 
 install paru for AUR package manager
 
@@ -31,11 +32,13 @@ cd paru
 makepkg -si
 ```
 
+### Useful Command (arch linux)
+
 must have package
 
 ```bash
 sudo pacman -Syu --noconfirm  \
-  && sudo pacman -S --noconfirm git wget tmux gcc curl net-tools htop tree gcc ripgrep gdu less bat exa htop fd vim
+  && sudo pacman -S --noconfirm  wget net-tools htop tree gdu less bat exa htop vim
 ```
 
 best to have package
@@ -45,11 +48,37 @@ sudo pacman -S --noconfirm jq yq tldr
 
 ```
 
-## usage
+### tmux
+
+install tmux plugin manager
+
+```bash
+sudo pacman -S --noconfirm tmux
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+tmux source ~/.tmux.conf
+```
+
+### git
+
+```bash
+sudo pacman -S --noconfirm git lazygit git-delta
+mkdir -p ~/config/lazygit
+ln -sf ~/.config/dotfile/.lazygit-config ~/config/lazygit/config.yml
+```
+
+### nvim
+
+```bash
+sudo pacman -S --noconfirm neovim ripgrep fd fzf gcc curl
+clone git@github.com:kentchiu/nvim-config.git ~/.config/nvim-config
+ln -sf ~/.config/nvim-config ~/config/nvim
+```
+
+### usage
 
 > NOTE: BACKUP all of those files before `ln` command
 
-linux/maxos
+### linux/maxos
 
 ```bash
 ln -sf ~/.config/dotfile/.zshrc ~/.zshrc
@@ -64,29 +93,7 @@ ln -sf ~/.config/dotfile/.vimrc ~/.vimrc
 ln -sf ~/.config/dotfile/.zshrc2 ~/.zshrc
 ```
 
-install tmux plugin manager
-
-```bash
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-tmux source ~/.tmux.conf
-```
-
-nvim
-
-```bash
-clone git@github.com:kentchiu/nvim-config.git ~/.config/nvim-config
-ln -sf ~/.config/nvim-config ~/config/nvim
-```
-
-git
-
-```bash
-sudo pacman -S lazygit git-delta
-mkdir -p ~/config/lazygit
-ln -sf ~/.config/dotfile/.lazygit-config ~/config/lazygit/config.yml
-```
-
-## windows
+### windows
 
 Open powershell with administrator privileges
 
