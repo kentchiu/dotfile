@@ -9,7 +9,7 @@ if wezterm.config_builder then
 end
 
 -- This is where you actually apply your config choices
-config.default_domain = 'WSL:Ubuntu'
+config.default_domain = 'WSL:Arch'
 
 --config.font = wezterm.font 'JetBrains Mono'
 -- config.font =  wezterm.font('JetBrains Mono', { weight = 'Bold', italic = true })
