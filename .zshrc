@@ -149,13 +149,15 @@ export SDKMAN_DIR="$HOME/.sdkman"
 # alias nvim='~/download/nvim.appimage'
 alias vi=nvim
 alias vf='nvim $(fzf)'
-alias n="nvim -c 'Telescope oldfiles'"
 
-# alias ls="exa"
-alias ls='exa --grid --color auto --icons --sort=type'
-alias ll='exa --long --color always --icons --sort=type'
-alias la='exa --grid --all --color auto --icons --sort=type'
-alias lla='exa --long --all --color auto --icons --sort=type'
+alias ls="exa --icons"
+# alias ls='exa --grid --color auto --icons --sort=type'
+# alias ll='exa --long --color always --icons --sort=type'
+# alias la='exa --grid --all --color auto --icons --sort=type'
+# alias lla='exa --long --all --color auto --icons --sort=type'
+
+alias cd="z"
+alias cat="bat"
 
 # difft
 alias difft="GIT_EXTERNAL_DIFF=difft git diff"

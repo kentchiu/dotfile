@@ -90,6 +90,7 @@ ln -sf ~/.config/dotfile/.ideavimrc ~/.ideavimrc
 ln -sf ~/.config/dotfile/.wezterm.lua ~/.wezterm.lua
 ln -sf ~/.config/dotfile/.vimrc ~/.vimrc
 
+# for non-dev env
 ln -sf ~/.config/dotfile/.zshrc-2 ~/.zshrc
 ```
 
