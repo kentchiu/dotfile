@@ -25,8 +25,10 @@ config.audible_bell = "Disabled"
 -- 關閉窗口時不提示確認
 config.window_close_confirmation = "NeverPrompt"
 
+config.use_fancy_tab_bar = false
+
 -- 配色方案
-config.color_scheme = "One Dark (Gogh)"
+-- config.color_scheme = "One Dark (Gogh)"
 
 -- 平台特定配置
 if wezterm.target_triple == "x86_64-pc-windows-msvc" then
