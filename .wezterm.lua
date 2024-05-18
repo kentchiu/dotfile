@@ -31,6 +31,8 @@ config.audible_bell = "Disabled"
 -- 關閉窗口時不提示確認
 config.window_close_confirmation = "NeverPrompt"
 
+config.window_background_opacity = 0.8
+
 -- tab_bar  配置
 config.enable_tab_bar = true
 config.hide_tab_bar_if_only_one_tab = true
@@ -41,6 +43,13 @@ config.switch_to_last_active_tab_when_closing_tab = true
 config.tab_and_split_indices_are_zero_based = false
 config.tab_bar_at_bottom = true
 config.use_fancy_tab_bar = false
+
+config.window_padding = {
+	left = 5,
+	right = 5,
+	top = 5,
+	bottom = 5,
+}
 
 -- This function returns the suggested title for a tab.
 -- It prefers the title that was set via `tab:set_title()`
@@ -58,39 +67,6 @@ function tab_title(tab_info)
 end
 
 wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
-	-- local edge_background = "#0b0022"
-	-- local background = "#1b1032"
-	-- local foreground = "#808080"
-	--
-	-- if tab.is_active then
-	-- 	background = "blue"
-	-- 	foreground = "#c0c0c0"
-	-- elseif hover then
-	-- 	background = "#3b3052"
-	-- 	foreground = "#909090"
-	-- end
-	--
-	-- local edge_foreground = background
-	--
-	-- local title = tab_title(tab)
-	--
-	-- -- ensure that the titles fit in the available space,
-	-- -- and that we have room for the edges.
-	-- title = wezterm.truncate_right(title, max_width - 2)
-	--
-	-- return {
-	-- 	{ Background = { Color = edge_background } },
-	-- 	{ Foreground = { Color = edge_foreground } },
-	-- 	{ Text = "" },
-	-- 	{ Background = { Color = background } },
-	-- 	{ Foreground = { Color = foreground } },
-	-- 	{ Text = title },
-	-- 	{ Background = { Color = edge_background } },
-	-- 	{ Foreground = { Color = edge_foreground } },
-	-- 	{ Text = "" },
-	-- }
-	--
-	--#region
 	local nf = wezterm.nerdfonts
 
 	local GLYPH_SEMI_CIRCLE_LEFT = nf.ple_left_half_circle_thick --[[ '' ]]
