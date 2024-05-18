@@ -1,6 +1,12 @@
+-- The only required line is this one.
 local wezterm = require("wezterm")
-
+local mux = wezterm.mux
+local act = wezterm.action
+-- Some empty tables for later use
 local config = {}
+local keys = {}
+local mouse_bindings = {}
+local launch_menu = {}
 
 -- 使用 config_builder 提供更清晰的錯誤信息
 if wezterm.config_builder then
@@ -25,7 +31,10 @@ config.audible_bell = "Disabled"
 -- 關閉窗口時不提示確認
 config.window_close_confirmation = "NeverPrompt"
 
+config.enable_tab_bar = true
+config.hide_tab_bar_if_only_one_tab = false
 config.use_fancy_tab_bar = false
+config.show_tab_index_in_tab_bar = false
 
 -- 配色方案
 -- config.color_scheme = "One Dark (Gogh)"
