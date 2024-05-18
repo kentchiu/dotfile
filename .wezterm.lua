@@ -31,13 +31,176 @@ config.audible_bell = "Disabled"
 -- 關閉窗口時不提示確認
 config.window_close_confirmation = "NeverPrompt"
 
+-- tab_bar  配置
 config.enable_tab_bar = true
-config.hide_tab_bar_if_only_one_tab = false
-config.use_fancy_tab_bar = false
+config.hide_tab_bar_if_only_one_tab = true
+config.show_new_tab_button_in_tab_bar = true
 config.show_tab_index_in_tab_bar = false
+config.show_tabs_in_tab_bar = true
+config.switch_to_last_active_tab_when_closing_tab = true
+config.tab_and_split_indices_are_zero_based = false
+config.tab_bar_at_bottom = true
+config.use_fancy_tab_bar = false
 
--- 配色方案
--- config.color_scheme = "One Dark (Gogh)"
+-- This function returns the suggested title for a tab.
+-- It prefers the title that was set via `tab:set_title()`
+-- or `wezterm cli set-tab-title`, but falls back to the
+-- title of the active pane in that tab.
+function tab_title(tab_info)
+	local title = tab_info.tab_title
+	-- if the tab title is explicitly set, take that
+	if title and #title > 0 then
+		return title
+	end
+	-- Otherwise, use the title from the active pane
+	-- in that tab
+	return tab_info.active_pane.title
+end
+
+wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
+	-- local edge_background = "#0b0022"
+	-- local background = "#1b1032"
+	-- local foreground = "#808080"
+	--
+	-- if tab.is_active then
+	-- 	background = "blue"
+	-- 	foreground = "#c0c0c0"
+	-- elseif hover then
+	-- 	background = "#3b3052"
+	-- 	foreground = "#909090"
+	-- end
+	--
+	-- local edge_foreground = background
+	--
+	-- local title = tab_title(tab)
+	--
+	-- -- ensure that the titles fit in the available space,
+	-- -- and that we have room for the edges.
+	-- title = wezterm.truncate_right(title, max_width - 2)
+	--
+	-- return {
+	-- 	{ Background = { Color = edge_background } },
+	-- 	{ Foreground = { Color = edge_foreground } },
+	-- 	{ Text = "" },
+	-- 	{ Background = { Color = background } },
+	-- 	{ Foreground = { Color = foreground } },
+	-- 	{ Text = title },
+	-- 	{ Background = { Color = edge_background } },
+	-- 	{ Foreground = { Color = edge_foreground } },
+	-- 	{ Text = "" },
+	-- }
+	--
+	--#region
+	local nf = wezterm.nerdfonts
+
+	local GLYPH_SEMI_CIRCLE_LEFT = nf.ple_left_half_circle_thick --[[ '' ]]
+	local GLYPH_SEMI_CIRCLE_RIGHT = nf.ple_right_half_circle_thick --[[ '' ]]
+	local GLYPH_CIRCLE = nf.fa_circle --[[ '' ]]
+	local GLYPH_ADMIN = nf.md_shield_half_full --[[ '󰞀' ]]
+
+	local M = {}
+
+	local __cells__ = {} -- wezterm FormatItems (ref: https://wezfurlong.org/wezterm/config/lua/wezterm/format.html)
+
+-- stylua: ignore
+local colors = {
+   default   = { bg = '#45475a', fg = '#1c1b19' },
+   is_active = { bg = '#7FB4CA', fg = '#11111b' },
+   hover     = { bg = '#587d8c', fg = '#1c1b19' },
+}
+
+	local _set_process_name = function(s)
+		local a = string.gsub(s, "(.*[/\\])(.*)", "%2")
+		return a:gsub("%.exe$", "")
+	end
+
+	local _set_title = function(process_name, base_title, max_width, inset)
+		local title
+		inset = inset or 6
+
+		if process_name:len() > 0 then
+			title = process_name .. " ~ " .. base_title
+		else
+			title = base_title
+		end
+
+		if title:len() > max_width - inset then
+			local diff = title:len() - max_width + inset
+			title = wezterm.truncate_right(title, title:len() - diff)
+		end
+
+		return title
+	end
+
+	local _check_if_admin = function(p)
+		if p:match("^Administrator: ") then
+			return true
+		end
+		return false
+	end
+
+	---@param fg string
+	---@param bg string
+	---@param attribute table
+	---@param text string
+	local _push = function(bg, fg, attribute, text)
+		table.insert(__cells__, { Background = { Color = bg } })
+		table.insert(__cells__, { Foreground = { Color = fg } })
+		table.insert(__cells__, { Attribute = attribute })
+		table.insert(__cells__, { Text = text })
+	end
+
+	__cells__ = {}
+
+	local bg
+	local fg
+	local process_name = _set_process_name(tab.active_pane.foreground_process_name)
+	local is_admin = _check_if_admin(tab.active_pane.title)
+	local title = _set_title(process_name, tab.active_pane.title, max_width, (is_admin and 8))
+
+	if tab.is_active then
+		bg = colors.is_active.bg
+		fg = colors.is_active.fg
+	elseif hover then
+		bg = colors.hover.bg
+		fg = colors.hover.fg
+	else
+		bg = colors.default.bg
+		fg = colors.default.fg
+	end
+
+	local has_unseen_output = false
+	for _, pane in ipairs(tab.panes) do
+		if pane.has_unseen_output then
+			has_unseen_output = true
+			break
+		end
+	end
+
+	-- Left semi-circle
+	_push("rgba(0, 0, 0, 0.4)", bg, { Intensity = "Bold" }, GLYPH_SEMI_CIRCLE_LEFT)
+
+	-- Admin Icon
+	if is_admin then
+		_push(bg, fg, { Intensity = "Bold" }, " " .. GLYPH_ADMIN)
+	end
+
+	-- Title
+	_push(bg, fg, { Intensity = "Bold" }, " " .. title)
+
+	-- Unseen output alert
+	if has_unseen_output then
+		_push(bg, "#FFA066", { Intensity = "Bold" }, " " .. GLYPH_CIRCLE)
+	end
+
+	-- Right padding
+	_push(bg, fg, { Intensity = "Bold" }, " ")
+
+	-- Right semi-circle
+	_push("rgba(0, 0, 0, 0.4)", bg, { Intensity = "Bold" }, GLYPH_SEMI_CIRCLE_RIGHT)
+
+	return __cells__
+end)
 
 -- 平台特定配置
 if wezterm.target_triple == "x86_64-pc-windows-msvc" then
