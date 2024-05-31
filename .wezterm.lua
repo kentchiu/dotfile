@@ -31,7 +31,7 @@ config.audible_bell = "Disabled"
 -- 關閉窗口時不提示確認
 config.window_close_confirmation = "NeverPrompt"
 
-config.window_background_opacity = 0.8
+-- config.window_background_opacity = 0.6
 
 -- tab_bar  配置
 config.enable_tab_bar = true
