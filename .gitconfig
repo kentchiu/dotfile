@@ -22,6 +22,9 @@
 [merge]
   conflictstyle = diff3
   tool = nvimdiff
+
+[rerere]
+	enabled = true # 不要產生 .orig 檔案
   
 [mergetool "nvimdiff"]
   layout = "LOCAL,BASE,REMOTE / MERGED"
