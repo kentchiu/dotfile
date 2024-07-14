@@ -124,6 +124,10 @@ source $ZSH/oh-my-zsh.sh
 ### Custom Setting 
 ###
 
+export VISUAL=nvim
+export EDITOR=nvim 
+alias lg=lazygit
+
 # nvm
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
