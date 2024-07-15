@@ -89,6 +89,7 @@ ln -sf ~/.config/dotfile/.tmux.conf ~/.tmux.conf
 ln -sf ~/.config/dotfile/.ideavimrc ~/.ideavimrc
 ln -sf ~/.config/dotfile/.wezterm.lua ~/.wezterm.lua
 ln -sf ~/.config/dotfile/.vimrc ~/.vimrc
+ln -sf ~/.config/dotfile/lazygit-config.yml ~/.config/lazygit/config.yml
 
 # for non-dev env
 ln -sf ~/.config/dotfile/.zshrc-2 ~/.zshrc
