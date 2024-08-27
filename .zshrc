@@ -210,6 +210,11 @@ frg() {
   rg --color=always --line-number --no-heading "$query" | fzf --ansi --preview "echo {} | awk -F: '{print \"bat --style=numbers --color=always --highlight-line \" \$2 \" \" \$1 }' | sh" --preview-window=right:70%:wrap --query="$2" --select-1 --exit-0
 }
 
+## dev alias
+alias webapi="dotnet watch run --project  WebApi/WebApi.csproj --launch-profile=kent"
+alias logical="dotnet watch run --project logical/Service.csproj  --launch-profile=kent"
+alias rbac="dotnet watch run --project  rbacservice/rbacservice.csproj  --launch-profile=Development"
+alias websocket="dotnet watch run --project NiceWebSocket/NiceWebSocket.csproj --launch-profile kent"
 
 # only for development
 source ~/dev.env
