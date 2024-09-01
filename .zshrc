@@ -216,6 +216,10 @@ alias logical="dotnet watch run --project logical/Service.csproj  --launch-profi
 alias rbac="dotnet watch run --project  rbacservice/rbacservice.csproj  --launch-profile=Development"
 alias websocket="dotnet watch run --project NiceWebSocket/NiceWebSocket.csproj --launch-profile kent"
 
+# binding ctrl+z to fg
+bindkey -s '^Z' 'fg^M'
+
+
 # only for development
 source ~/dev.env
 ## this command is use to clean screen when tmux restore the session
