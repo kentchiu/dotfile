@@ -210,6 +210,21 @@ frg() {
   rg --color=always --line-number --no-heading "$query" | fzf --ansi --preview "echo {} | awk -F: '{print \"bat --style=numbers --color=always --highlight-line \" \$2 \" \" \$1 }' | sh" --preview-window=right:70%:wrap --query="$2" --select-1 --exit-0
 }
 
+# download gitignore template from github, usage: gignore <template>
+ignore() {
+  local url="https://raw.githubusercontent.com/github/gitignore/main/$1.gitignore"
+  local file=".gitignore"
+
+  # Check if the remote file exists
+  if curl --head --silent --fail "$url" > /dev/null; then
+    echo "Downloading $url ..."
+    curl -o "$file" "$url"
+  else
+    echo "Remote file $url does not exist."
+  fi
+}
+
+
 ## dev alias
 alias webapi="dotnet watch run --project  WebApi/WebApi.csproj --launch-profile=kent"
 alias logical="dotnet watch run --project logical/Service.csproj  --launch-profile=kent"
@@ -224,3 +239,5 @@ bindkey -s '^Z' 'fg^M'
 source ~/dev.env
 ## this command is use to clean screen when tmux restore the session
 clear
+
+. "$HOME/.cargo/env"
