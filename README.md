@@ -21,6 +21,21 @@
   4. nerdfont
   5. fzf
 
+### clone
+
+```bash
+mkdir .config
+cd .config
+git clone https://github.com/kentchiu/dotfile.git
+
+ln -sf ~/.config/dotfile/.zshrc ~/.zshrc
+# or
+# ln -sf ~/.config/dotfile/.zshrc-2 ~/.zshrc
+ln -sf ~/.config/dotfile/.gitconfig ~/.gitconfig
+ln -sf ~/.config/dotfile/.tmux.conf ~/.tmux.conf
+
+```
+
 ### paru
 
 install paru for AUR package manager
@@ -58,6 +73,8 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 tmux source ~/.tmux.conf
 ```
 
+> leader + I to install plugins after install
+
 ### git
 
 ```bash
@@ -69,31 +86,15 @@ ln -sf ~/.config/dotfile/.lazygit-config ~/config/lazygit/config.yml
 ### nvim
 
 ```bash
-sudo pacman -S --noconfirm neovim ripgrep fd fzf gcc curl
-git clone git@github.com:kentchiu/nvim-config.git ~/.config/nvim-config
-ln -sf ~/.config/nvim-config ~/config/nvim
+sudo pacman -S --noconfirm neovim ripgrep fd fzf gcc curl tree-sitter-cli
+git clone https://github.com/kentchiu/nvim.git ~/.config/nvim
 ```
+
+> run nvim and :checkhealth
 
 ### usage
 
 > NOTE: BACKUP all of those files before `ln` command
-
-### linux/maxos
-
-```bash
-ln -sf ~/.config/dotfile/.zshrc ~/.zshrc
-ln -sf ~/.config/dotfile/.gitconfig ~/.gitconfig
-ln -sf ~/.config/dotfile/.tmux.conf ~/.tmux.conf
-
-
-ln -sf ~/.config/dotfile/.ideavimrc ~/.ideavimrc
-ln -sf ~/.config/dotfile/.wezterm.lua ~/.wezterm.lua
-ln -sf ~/.config/dotfile/.vimrc ~/.vimrc
-ln -sf ~/.config/dotfile/lazygit-config.yml ~/.config/lazygit/config.yml
-
-# for non-dev env
-ln -sf ~/.config/dotfile/.zshrc-2 ~/.zshrc
-```
 
 ### windows
 
