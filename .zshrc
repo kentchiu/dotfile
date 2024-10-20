@@ -82,6 +82,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
+  vi-mode
   fzf
   git
   poetry
@@ -233,6 +234,7 @@ alias websocket="dotnet watch run --project NiceWebSocket/NiceWebSocket.csproj -
 
 # binding ctrl+z to fg
 bindkey -s '^Z' 'fg^M'
+
 
 
 # only for development
