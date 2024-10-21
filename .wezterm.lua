@@ -15,12 +15,12 @@ end
 
 -- 字體設置，使用 JetBrains Mono 和 Symbols Nerd Font Mono 作為備選字體
 config.font = wezterm.font_with_fallback({
-	"JetBrains Mono",
-	{ family = "Symbols Nerd Font Mono", scale = 0.75 },
+	{ family = "JetBrainsMono Nerd Font Mono", weight = "Medium" },
+	-- { family = "Symbols Nerd Font Mono", scale = 0.75 },
 })
 
 -- 設置字體大小
-config.font_size = 12.0
+config.font_size = 13.0
 
 -- 禁用更新檢查
 config.check_for_updates = false
@@ -30,8 +30,9 @@ config.enable_scroll_bar = true
 config.audible_bell = "Disabled"
 -- 關閉窗口時不提示確認
 config.window_close_confirmation = "NeverPrompt"
-
 -- config.window_background_opacity = 0.6
+
+config.color_scheme = "Tokyo Night Moon"
 
 -- tab_bar  配置
 config.enable_tab_bar = true
@@ -79,11 +80,11 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_wid
 	local __cells__ = {} -- wezterm FormatItems (ref: https://wezfurlong.org/wezterm/config/lua/wezterm/format.html)
 
 -- stylua: ignore
-local colors = {
-   default   = { bg = '#45475a', fg = '#1c1b19' },
-   is_active = { bg = '#7FB4CA', fg = '#11111b' },
-   hover     = { bg = '#587d8c', fg = '#1c1b19' },
-}
+-- local colors = {
+--    default   = { bg = '#45475a', fg = '#1c1b19' },
+--    is_active = { bg = '#7FB4CA', fg = '#11111b' },
+--    hover     = { bg = '#587d8c', fg = '#1c1b19' },
+-- }
 
 	local _set_process_name = function(s)
 		local a = string.gsub(s, "(.*[/\\])(.*)", "%2")
