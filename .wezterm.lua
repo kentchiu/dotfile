@@ -79,12 +79,12 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_wid
 
 	local __cells__ = {} -- wezterm FormatItems (ref: https://wezfurlong.org/wezterm/config/lua/wezterm/format.html)
 
--- stylua: ignore
--- local colors = {
---    default   = { bg = '#45475a', fg = '#1c1b19' },
---    is_active = { bg = '#7FB4CA', fg = '#11111b' },
---    hover     = { bg = '#587d8c', fg = '#1c1b19' },
--- }
+  -- stylua: ignore
+  local colors = {
+    default   = { bg = '#45475a', fg = '#1c1b19' },
+    is_active = { bg = '#7FB4CA', fg = '#11111b' },
+    hover     = { bg = '#587d8c', fg = '#1c1b19' },
+  }
 
 	local _set_process_name = function(s)
 		local a = string.gsub(s, "(.*[/\\])(.*)", "%2")
