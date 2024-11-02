@@ -88,6 +88,8 @@ plugins=(
   poetry
   zsh-autosuggestions
   zoxide
+  kubectl
+  minikube
 )
 
 source $ZSH/oh-my-zsh.sh
