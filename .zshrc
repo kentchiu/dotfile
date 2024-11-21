@@ -12,14 +12,8 @@ fi
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-
-# ZSH_THEME="robbyrussell"
-
-# ZSH_THEME="powerlevel10k/powerlevel10k"
+# Set Powerlevel10k as the theme
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -82,14 +76,19 @@ export ZSH="$HOME/.oh-my-zsh"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
+  # Navigation
   vi-mode
+  zoxide
   fzf
+
+  # Development
   git
   poetry
-  zsh-autosuggestions
-  zoxide
   kubectl
   minikube
+
+  # Completion & Suggestions
+  zsh-autosuggestions
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -173,8 +172,8 @@ alias dlog="GIT_EXTERNAL_DIFF=difft git log -p --ext-diff $@;"
 # zoxide 
 eval "$(zoxide init --cmd cd zsh)"
 
-# starship
-eval "$(starship init zsh)"
+# Note: Starship prompt disabled since we're using Powerlevel10k
+# eval "$(starship init zsh)"
 #################
 # FZF 
 #################
