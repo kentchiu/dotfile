@@ -1,5 +1,10 @@
+{{- $name := promptString "name" -}}
+{{- $email := promptString "email" -}}
 {{- $osid := .chezmoi.os -}}
+
 [data]
+    name = {{ $name | quote }}
+    email = {{ $email | quote }}
     os = {{ $osid | quote }}
     is_windows = {{ eq .chezmoi.os "windows" }}
     is_linux = {{ eq .chezmoi.os "linux" }}

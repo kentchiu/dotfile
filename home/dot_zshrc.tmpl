@@ -2,10 +2,18 @@
 {{- if .is_darwin }}
 # macOS specific settings
 export PATH="/opt/homebrew/bin:$PATH"
+eval "$(/opt/homebrew/bin/brew shellenv)"
 {{- end }}
 
 {{- if .is_linux }}
 # Linux specific settings
+{{- if lookPath "paru" }}
+alias update='paru -Syu'
+{{- else if lookPath "pacman" }}
+alias update='sudo pacman -Syu'
+{{- else if lookPath "apt" }}
+alias update='sudo apt update && sudo apt upgrade'
+{{- end }}
 {{- end }}
 
 # Common configurations
