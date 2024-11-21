@@ -1,0 +1,6 @@
+{{- $osid := .chezmoi.os -}}
+[data]
+    os = {{ $osid | quote }}
+    is_windows = {{ eq .chezmoi.os "windows" }}
+    is_linux = {{ eq .chezmoi.os "linux" }}
+    is_darwin = {{ eq .chezmoi.os "darwin" }}

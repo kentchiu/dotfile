@@ -105,3 +105,36 @@ New-Item -ItemType SymbolicLink -Path "$env:userprofile\.gitconfig" -Target "$en
 New-Item -ItemType SymbolicLink -Path "$env:userprofile\.ideavimrc" -Target "$env:userprofile\dev\dotfile\.ideavimrc" -Force
 New-Item -ItemType SymbolicLink -Path "$env:userprofile\.wezterm.lua" -Target "$env:userprofile\dev\dotfile\.wezterm.lua" -Force
 ```
+# Dotfiles
+
+Cross-platform dotfiles managed with chezmoi.
+
+## Quick Install
+
+### Unix-like (Linux/macOS)
+```bash
+sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply $GITHUB_USERNAME
+```
+
+### Windows PowerShell
+```powershell
+(irm -useb get.chezmoi.io) | iex; chezmoi init --apply $GITHUB_USERNAME
+```
+
+## Manual Installation
+
+1. Install chezmoi:
+   - Linux/macOS: `sh -c "$(curl -fsLS get.chezmoi.io)"`
+   - Windows: `(irm -useb get.chezmoi.io) | iex`
+
+2. Initialize dotfiles:
+   ```bash
+   chezmoi init $GITHUB_USERNAME
+   chezmoi apply
+   ```
+
+## Structure
+
+- `.chezmoi.toml.tmpl`: Template for chezmoi configuration
+- `home/`: Directory containing dotfiles
+- `scripts/`: Installation scripts for different platforms

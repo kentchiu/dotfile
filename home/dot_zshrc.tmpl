@@ -1,0 +1,18 @@
+# Platform-specific configurations
+{{- if .is_darwin }}
+# macOS specific settings
+export PATH="/opt/homebrew/bin:$PATH"
+{{- end }}
+
+{{- if .is_linux }}
+# Linux specific settings
+{{- end }}
+
+# Common configurations
+alias ll='ls -la'
+alias ..='cd ..'
+
+# Load local customizations if they exist
+if [ -f ~/.zshrc.local ]; then
+    source ~/.zshrc.local
+fi

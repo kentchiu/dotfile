@@ -1,0 +1,13 @@
+[user]
+    name = {{ .name }}
+    email = {{ .email }}
+
+[core]
+{{- if .is_windows }}
+    autocrlf = true
+{{- else }}
+    autocrlf = input
+{{- end }}
+
+[init]
+    defaultBranch = main
