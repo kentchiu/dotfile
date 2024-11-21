@@ -109,6 +109,18 @@ New-Item -ItemType SymbolicLink -Path "$env:userprofile\.wezterm.lua" -Target "$
 
 Cross-platform dotfiles managed with chezmoi.
 
+## Dependencies
+
+- Nerd Font (for icons)
+- Git
+- Tmux
+- Neovim
+- Lazygit
+- Delta (for git diff)
+- Zsh
+  - Oh-my-zsh
+  - Powerlevel10k
+
 ## Quick Install
 
 ### Unix-like (Linux/macOS)

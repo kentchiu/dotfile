@@ -1,3 +1,11 @@
+# Enable Powerlevel10k
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+# Set ZSH theme
+ZSH_THEME="powerlevel10k/powerlevel10k"
+
 # Platform-specific configurations
 {{- if .is_darwin }}
 # macOS specific settings
