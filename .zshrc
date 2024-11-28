@@ -82,7 +82,6 @@ export ZSH="$HOME/.oh-my-zsh"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  vi-mode
   fzf
   git
   poetry
@@ -131,18 +130,6 @@ export VISUAL=nvim
 export EDITOR=nvim 
 alias lg=lazygit
 
-# nvm
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-# # pyenv
-# export PYENV_ROOT="$HOME/.pyenv"
-# command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-# eval "$(pyenv init -)"
-
-# poetry
-# export PATH="$HOME/.local/bin:$PATH"
 
 #go 
 export PATH=$PATH:/usr/local/go/bin
@@ -152,16 +139,10 @@ export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
 # nvim
-# alias vi='~/download/nvim.appimage'
-# alias nvim='~/download/nvim.appimage'
 alias vi=nvim
 alias vf='nvim $(fzf)'
 
 alias ls="exa --icons"
-# alias ls='exa --grid --color auto --icons --sort=type'
-# alias ll='exa --long --color always --icons --sort=type'
-# alias la='exa --grid --all --color auto --icons --sort=type'
-# alias lla='exa --long --all --color auto --icons --sort=type'
 
 alias cd="z"
 alias cat="bat"
@@ -207,7 +188,7 @@ ff() {
 frg() {
   local query="$1"
   if [[ -z "$query" ]]; then
-    echo "Usage: ff_rg <search_term>"
+    echo "Usage: frg <search_term>"
     return 1
   fi
   rg --color=always --line-number --no-heading "$query" | fzf --ansi --preview "echo {} | awk -F: '{print \"bat --style=numbers --color=always --highlight-line \" \$2 \" \" \$1 }' | sh" --preview-window=right:70%:wrap --query="$2" --select-1 --exit-0
