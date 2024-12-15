@@ -171,7 +171,7 @@ export FZF_CTRL_T_OPTS="--preview '(highlight -O ansi -l {} 2> /dev/null || bat 
 export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap --bind '?:toggle-preview'"
 
 # Function to open a file using fzf and vim
-fv() {
+fvim() {
   local file
   file=$(fzf --preview "bat --style=numbers --color=always {}" --preview-window=right:70%:wrap --query="$1" --select-1 --exit-0)
   if [[ -n "$file" ]]; then
@@ -180,9 +180,14 @@ fv() {
 }
 
 # Function to search for files under the home directory and preview with fzf
-ff() {
+ffind() {
+  local query="$1"
   local file
-  file=$(find "$HOME" -type f | fzf --preview "bat --style=numbers --color=always {}" --preview-window=right:70%:wrap --query="$1" --select-1 --exit-0)
+  if [[ -z "$query" ]]; then
+    echo "Usage: ffind <path>"
+    return 1
+  fi
+  file=$(find "$query" -type f | fzf --preview "bat --style=numbers --color=always {}" --preview-window=right:70%:wrap --query="$1" --select-1 --exit-0)
   if [[ -n "$file" ]]; then
     bat --style=numbers --color=always "$file" | less -R
   fi
@@ -197,6 +202,38 @@ frg() {
   fi
   rg --color=always --line-number --no-heading "$query" | fzf --ansi --preview "echo {} | awk -F: '{print \"bat --style=numbers --color=always --highlight-line \" \$2 \" \" \$1 }' | sh" --preview-window=right:70%:wrap --query="$2" --select-1 --exit-0
 }
+
+# search and cd to folder
+fcd() {
+  # 檢查是否指定了父目錄
+  if [ -z "$1" ]; then
+    echo "Usage: search_and_cd <parent_directory>"
+    return 1
+  fi
+
+  # 指定的父目錄
+  local parent_dir="$1"
+
+  # 確認父目錄是否存在且為目錄
+  if [ ! -d "$parent_dir" ]; then
+    echo "Error: $parent_dir is not a valid directory"
+    return 1
+  fi
+
+  # 使用 fzf 搜尋子目錄
+  local target_dir
+  target_dir=$(find "$parent_dir" -type d 2>/dev/null | fzf --prompt="Select a directory> ")
+
+  # 如果有選擇目錄則切換，否則提示退出
+  if [ -n "$target_dir" ]; then
+    cd "$target_dir" || return
+    echo "Changed directory to: $target_dir"
+  else
+    echo "No directory selected."
+  fi
+}
+
+
 
 # download gitignore template from github, usage: gignore <template>
 ignore() {
