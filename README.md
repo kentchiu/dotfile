@@ -87,7 +87,7 @@ ln -sf ~/.config/dotfile/.lazygit-config ~/config/lazygit/config.yml
 
 ```bash
 sudo pacman -S --noconfirm neovim ripgrep fd fzf gcc curl tree-sitter-cli
-git clone https://github.com/kentchiu/nvim.git ~/.config/nvim
+ln -sf ~/.config/dotfile/nvim ~/config/nvim
 ```
 
 > run nvim and :checkhealth
