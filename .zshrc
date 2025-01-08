@@ -144,7 +144,7 @@ export SDKMAN_DIR="$HOME/.sdkman"
 
 # nvim
 alias vi=nvim
-alias vf='nvim $(fzf)'
+alias ff='nvim $(fzf)'
 
 alias ls="exa --icons"
 
@@ -171,13 +171,32 @@ export FZF_CTRL_T_OPTS="--preview '(highlight -O ansi -l {} 2> /dev/null || bat 
 export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap --bind '?:toggle-preview'"
 
 # Function to open a file using fzf and vim
-fvim() {
+fv() {
   local file
   file=$(fzf --preview "bat --style=numbers --color=always {}" --preview-window=right:70%:wrap --query="$1" --select-1 --exit-0)
   if [[ -n "$file" ]]; then
     nvim "$file"
   fi
 }
+
+# ripgrep->fzf->vim [QUERY]
+fvr() (
+  RELOAD='reload:rg --column --color=always --smart-case {q} || :'
+  OPENER='if [[ $FZF_SELECT_COUNT -eq 0 ]]; then
+            nvim {1} +{2}     # No selection. Open the current line in Vim.
+          else
+            nvim +cw -q {+f}  # Build quickfix list for the selected items.
+          fi'
+  fzf --disabled --ansi --multi \
+      --bind "start:$RELOAD" --bind "change:$RELOAD" \
+      --bind "enter:become:$OPENER" \
+      --bind "ctrl-o:execute:$OPENER" \
+      --bind 'alt-a:select-all,alt-d:deselect-all,ctrl-/:toggle-preview' \
+      --delimiter : \
+      --preview 'bat --style=full --color=always --highlight-line {2} {1}' \
+      --preview-window '~4,+{2}+4/3,<80(up)' \
+      --query "$*"
+)
 
 # Function to search for files under the home directory and preview with fzf
 ffind() {
@@ -193,15 +212,16 @@ ffind() {
   fi
 }
 
-# Function to search file content with rg and fzf
-frg() {
-  local query="$1"
-  if [[ -z "$query" ]]; then
-    echo "Usage: frg <search_term>"
-    return 1
-  fi
-  rg --color=always --line-number --no-heading "$query" | fzf --ansi --preview "echo {} | awk -F: '{print \"bat --style=numbers --color=always --highlight-line \" \$2 \" \" \$1 }' | sh" --preview-window=right:70%:wrap --query="$2" --select-1 --exit-0
-}
+# # Function to search file content with rg and fzf
+# frg() {
+#   local query="$1"
+#   if [[ -z "$query" ]]; then
+#     echo "Usage: frg <search_term>"
+#     return 1
+#   fi
+#   rg --color=always --line-number --no-heading "$query" | fzf --ansi --preview "echo {} | awk -F: '{print \"bat --style=numbers --color=always --highlight-line \" \$2 \" \" \$1 }' | sh" --preview-window=right:70%:wrap --query="$2" --select-1 --exit-0
+# }
+
 
 # search and cd to folder
 fcd() {
