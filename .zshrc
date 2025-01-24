@@ -145,6 +145,7 @@ export SDKMAN_DIR="$HOME/.sdkman"
 # nvim
 alias vi=nvim
 alias ff='nvim $(fzf)'
+alias lnvim="NVIM_APPNAME=lnvim nvim"
 
 alias ls="exa --icons"
 

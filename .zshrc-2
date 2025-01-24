@@ -121,18 +121,8 @@ PROMPT='%F{green}%n%f@%F{blue}%m%f %F{magenta}%~%f %F{yellow}$ %f'
 # alias nvim='~/download/nvim.appimage'
 alias vi=nvim
 alias vf='nvim $(fzf)'
-alias n="nvim -c 'Telescope oldfiles'"
 
-alias ls="exa --icons"
-alias cd="z"
-alias cat="bat"
 
-# difft
-alias difft="GIT_EXTERNAL_DIFF=difft git diff"
-alias dlog="GIT_EXTERNAL_DIFF=difft git log -p --ext-diff $@;"
-
-# zoxide 
-eval "$(zoxide init --cmd cd zsh)"
 #################
 # FZF 
 #################
