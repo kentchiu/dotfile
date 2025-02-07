@@ -136,7 +136,7 @@ alias lg=lazygit
 
 
 #go 
-export PATH=$PATH:/usr/local/go/bin
+export PATH=$HOME/.cargo/bin:$PATH:/usr/local/go/bin:
 
 # THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
@@ -147,16 +147,23 @@ alias vi=nvim
 alias ff='nvim $(fzf)'
 alias lnvim="NVIM_APPNAME=lnvim nvim"
 
-alias ls="exa --icons"
+if command -v exa &> /dev/null; then
+  alias ls="exa --icons"
+fi
 
-alias cd="z"
-alias cat="bat"
+if command -v z &> /dev/null; then
+  alias cd="z"
+fi
 
-# difft
-alias difft="GIT_EXTERNAL_DIFF=difft git diff"
-alias dlog="GIT_EXTERNAL_DIFF=difft git log -p --ext-diff $@;"
+if command -v bat &> /dev/null; then
+  alias cat="bat"
+fi
 
-# zoxide 
+if command -v difft &> /dev/null; then
+  alias difft="GIT_EXTERNAL_DIFF=difft git diff"
+  alias dlog="GIT_EXTERNAL_DIFF=difft git log -p --ext-diff"
+fi
+e 
 eval "$(zoxide init --cmd cd zsh)"
 
 # starship
@@ -287,4 +294,4 @@ source ~/dev.env
 ## this command is use to clean screen when tmux restore the session
 clear
 
-. "$HOME/.cargo/env"
+# . "$HOME/.cargo/env"
