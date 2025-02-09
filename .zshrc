@@ -136,7 +136,7 @@ alias lg=lazygit
 
 
 #go 
-export PATH=$HOME/.cargo/bin:$PATH:/usr/local/go/bin:
+export PATH=$HOME/.cargo/bin:$PATH:/usr/local/go/bin:/Users/kent/flutter/bin:
 
 # THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
@@ -290,8 +290,10 @@ bindkey -s '^Z' 'fg^M'
 
 
 # only for development
-source ~/dev.env
+source ~/.dev.env
 ## this command is use to clean screen when tmux restore the session
 clear
 
 # . "$HOME/.cargo/env"
+
+. "$HOME/.local/bin/env"

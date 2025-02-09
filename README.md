@@ -36,6 +36,16 @@ ln -sf ~/.config/dotfile/.tmux.conf ~/.tmux.conf
 
 ```
 
+### Prepare
+
+install tpm
+
+install oh-my-zsh
+
+install zsh plugin
+
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+
 ### paru
 
 install paru for AUR package manager
