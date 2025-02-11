@@ -120,11 +120,34 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 ###
 ### Custom Setting 
 ###
+
+
+#PATH 
+GO_PATH=/usr/local/go/bin
+RUST_PATH=$HOME/.cargo/bin
+FLUTTER_PATH=$HOME/flutter/bin
+UV_TOOL_PATH=$HOME/.local/bin
+
+# /usr/local/sbin              System administration commands for root
+# /usr/local/bin               Locally installed system-wide applications
+# /usr/sbin                    System administration tools (root only)
+# /usr/bin                     Main system executables (most commands are here)
+# /sbin                        Essential system commands requiring root
+# /bin                         Basic system commands (e.g., `ls`, `cp`, `mv`)
+#
+# check PATH before add
+[ -d "$GO_PATH" ] && export PATH="$GO_PATH:$PATH"
+[ -d "$RUST_PATH" ] && export PATH="$RUST_PATH:$PATH"
+[ -d "$FLUTTER_PATH" ] && export PATH="$FLUTTER_PATH:$PATH"
+[ -d "$UV_TOOL_PATH" ] && export PATH="$UV_TOOL_PATH:$PATH"
+
+#export PATH=$HOME/.cargo/bin:$PATH:/usr/local/go/bin:/Users/kent/flutter/bin:
+
 
 # node version manager
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
@@ -133,14 +156,6 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 export VISUAL=nvim
 export EDITOR=nvim 
 alias lg=lazygit
-
-
-#go 
-export PATH=$HOME/.cargo/bin:$PATH:/usr/local/go/bin:/Users/kent/flutter/bin:
-
-# THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
 # nvim
 alias vi=nvim
@@ -163,11 +178,12 @@ if command -v difft &> /dev/null; then
   alias difft="GIT_EXTERNAL_DIFF=difft git diff"
   alias dlog="GIT_EXTERNAL_DIFF=difft git log -p --ext-diff"
 fi
-e 
+
 eval "$(zoxide init --cmd cd zsh)"
 
 # starship
 eval "$(starship init zsh)"
+
 #################
 # FZF 
 #################
@@ -220,17 +236,6 @@ ffind() {
   fi
 }
 
-# # Function to search file content with rg and fzf
-# frg() {
-#   local query="$1"
-#   if [[ -z "$query" ]]; then
-#     echo "Usage: frg <search_term>"
-#     return 1
-#   fi
-#   rg --color=always --line-number --no-heading "$query" | fzf --ansi --preview "echo {} | awk -F: '{print \"bat --style=numbers --color=always --highlight-line \" \$2 \" \" \$1 }' | sh" --preview-window=right:70%:wrap --query="$2" --select-1 --exit-0
-# }
-
-
 # search and cd to folder
 fcd() {
   # 檢查是否指定了父目錄
@@ -262,38 +267,21 @@ fcd() {
 }
 
 
-
-# download gitignore template from github, usage: gignore <template>
-ignore() {
-  local url="https://raw.githubusercontent.com/github/gitignore/main/$1.gitignore"
-  local file=".gitignore"
-
-  # Check if the remote file exists
-  if curl --head --silent --fail "$url" > /dev/null; then
-    echo "Downloading $url ..."
-    curl -o "$file" "$url"
-  else
-    echo "Remote file $url does not exist."
-  fi
-}
-
-
 ## dev alias
-alias webapi="dotnet watch run --project  WebApi/WebApi.csproj --launch-profile=kent"
-alias logical="dotnet watch run --project logical/Service.csproj  --launch-profile=kent"
-alias rbac="dotnet watch run --project  rbacservice/rbacservice.csproj  --launch-profile=Development"
-alias websocket="dotnet watch run --project NiceWebSocket/NiceWebSocket.csproj --launch-profile kent"
+# alias webapi="dotnet watch run --project  WebApi/WebApi.csproj --launch-profile=kent"
+# alias logical="dotnet watch run --project logical/Service.csproj  --launch-profile=kent"
+# alias rbac="dotnet watch run --project  rbacservice/rbacservice.csproj  --launch-profile=Development"
+# alias websocket="dotnet watch run --project NiceWebSocket/NiceWebSocket.csproj --launch-profile kent"
 
-# binding ctrl+z to fg
+# binding ctrl+z to fg 
 bindkey -s '^Z' 'fg^M'
 
 
-
-# only for development
+# only for development (API Key)
 source ~/.dev.env
 ## this command is use to clean screen when tmux restore the session
-clear
+# clear
 
 # . "$HOME/.cargo/env"
 
-. "$HOME/.local/bin/env"
+# . "$HOME/.local/bin/env"
