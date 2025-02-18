@@ -22,3 +22,5 @@ vim.opt.listchars = {
 -- you need to have a working rust toolchain to build the plugin
 -- in this case.
 -- vim.g.lazyvim_blink_main = false
+-- then you need to set the option below.
+vim.g.lazyvim_picker = "snacks"
