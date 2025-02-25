@@ -179,10 +179,14 @@ if command -v difft &> /dev/null; then
   alias dlog="GIT_EXTERNAL_DIFF=difft git log -p --ext-diff"
 fi
 
-eval "$(zoxide init --cmd cd zsh)"
+if command -v zoxide &> /dev/null; then
+  eval "$(zoxide init --cmd cd zsh)"
+fi
 
 # starship
-eval "$(starship init zsh)"
+if command -v starship &> /dev/null; then
+  eval "$(starship init zsh)"
+fi
 
 #################
 # FZF 
@@ -278,7 +282,9 @@ bindkey -s '^Z' 'fg^M'
 
 
 # only for development (API Key)
-source ~/.dev.env
+if [ -f ~/.dev.env ]; then
+  source ~/.dev.env
+fi
 ## this command is use to clean screen when tmux restore the session
 # clear
 
