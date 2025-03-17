@@ -13,10 +13,12 @@ if wezterm.config_builder then
 	config = wezterm.config_builder()
 end
 
--- 字體設置，使用 JetBrains Mono 和 Symbols Nerd Font Mono 作為備選字體
+-- 字體設置，使用 Maple Mono NF CN JetBrains Mono 和 Symbols Nerd Font Mono 作為備選字體
 config.font = wezterm.font_with_fallback({
+	-- { family = "Maple Mono NF CN" },
+	{ family = "Maple Mono NF CN", weight = "Thin" },
 	{ family = "JetBrainsMono Nerd Font Mono", weight = "Medium" },
-	-- { family = "Symbols Nerd Font Mono", scale = 0.75 },
+	{ family = "Symbols Nerd Font Mono", scale = 0.75 },
 })
 
 -- 設置字體大小
