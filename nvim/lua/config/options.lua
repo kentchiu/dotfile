@@ -24,3 +24,4 @@ vim.opt.listchars = {
 -- vim.g.lazyvim_blink_main = false
 -- then you need to set the option below.
 vim.g.lazyvim_picker = "snacks"
+vim.g.clipboard = "osc52"
