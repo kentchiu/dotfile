@@ -84,11 +84,8 @@ export ZSH="$HOME/.oh-my-zsh"
 plugins=(
   fzf
   git
-  poetry
   zsh-autosuggestions
   zoxide
-  kubectl
-  minikube
 )
 
 source $ZSH/oh-my-zsh.sh
