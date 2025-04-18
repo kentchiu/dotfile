@@ -112,6 +112,6 @@ Open powershell with administrator privileges
 
 ```powershell
 New-Item -ItemType SymbolicLink -Path "$env:userprofile\.gitconfig" -Target "$env:userprofile\dev\dotfile\.gitconfig" -Force
-New-Item -ItemType SymbolicLink -Path "$env:userprofile\.ideavimrc" -Target "$env:userprofile\dev\dotfile\.ideavimrc" -Force
 New-Item -ItemType SymbolicLink -Path "$env:userprofile\.wezterm.lua" -Target "$env:userprofile\dev\dotfile\.wezterm.lua" -Force
+New-Item -ItemType SymbolicLink -Path "$env:userprofile\AppData\Local\nvim" -Target "$env:userprofile\dev\dotfile\nvim" -Force
 ```
