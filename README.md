@@ -80,7 +80,13 @@ install tmux plugin manager
 ```bash
 sudo pacman -S --noconfirm tmux
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+ln -sf ~/.config/dotfile/.tmux.conf ~/.tmux.conf
+# start tmux
+tmux
+
 tmux source ~/.tmux.conf
+
+# ctrl + b + I to install plugins
 ```
 
 > leader + I to install plugins after install
