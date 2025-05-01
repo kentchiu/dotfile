@@ -188,6 +188,8 @@ fi
 #################
 # FZF 
 #################
+# preview scroll:shift+ up/ shift + down 
+export FZF_DEFAULT_OPTS="--bind='shift-up:preview-page-up,shift-down:preview-page-down'"
 # alt+c to change folder
 export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'"
 # ctrl + t to search file
