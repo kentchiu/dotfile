@@ -173,9 +173,9 @@ if command -v z &> /dev/null; then
   alias cd="z"
 fi
 
-if command -v bat &> /dev/null; then
-  alias cat="bat"
-fi
+# if command -v bat &> /dev/null; then
+#   alias cat="bat"
+# fi
 
 if command -v difft &> /dev/null; then
   alias difft="GIT_EXTERNAL_DIFF=difft git diff"
