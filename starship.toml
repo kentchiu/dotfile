@@ -11,3 +11,23 @@ success_symbol = '[➜](bold green)' # The 'success_symbol' segment is being set
 # Disable the package module, hiding it from the prompt completely
 [package]
 disabled = true
+
+# Customize git branch display
+[git_branch]
+format = "[$symbol$branch]($style) "
+style = "bold purple"
+
+# Customize git status
+[git_status]
+format = '([\[$all_status$ahead_behind\]]($style) )'
+style = "bold yellow"
+
+# Disable the cloud module to remove the cloud emoji
+[gcloud]
+disabled = true
+
+[aws]
+disabled = true
+
+[azure]
+disabled = true
