@@ -159,12 +159,6 @@ alias vi=nvim
 alias ff='nvim $(fzf)'
 alias lnvim="NVIM_APPNAME=lnvim nvim"
 
-# Converts UTF-8 text to UTF-16LE and copies it to Windows clipboard.
-# Exmaple: copy file content from WSL to Windows system clipboard
-# cat README.md | clip 
-
-alias clip='iconv -f utf-8 -t utf-16le | clip.exe'
-
 if command -v exa &> /dev/null; then
   alias ls="exa --icons"
 fi
