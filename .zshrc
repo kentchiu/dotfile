@@ -291,8 +291,6 @@ fi
 
 # . "$HOME/.local/bin/env"
 
-alias claude="/home/kent/.claude/local/claude"
-
 . "$HOME/.atuin/bin/env"
 
 eval "$(atuin init zsh)"
