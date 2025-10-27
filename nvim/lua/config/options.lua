@@ -31,6 +31,7 @@ vim.opt.diffopt = {
   -- "iwhite", -- this one, it doesn't fit all cases.
 }
 
--- SSH remove copy support.
+-- SSH remote copy support using OSC 52
 -- https://github.com/neovim/neovim/pull/33021
 vim.g.clipboard = "osc52"
+vim.opt.clipboard = "unnamedplus" -- use system clipboard for all yank/paste operations
