@@ -108,6 +108,37 @@ ln -sf ~/.config/dotfile/nvim ~/.config/nvim
 
 > run nvim and :checkhealth
 
+### ~/.config 配置
+
+本專案將常用的 `~/.config` 配置直接管理於根目錄，與 `nvim/` 保持一致的平面結構。
+
+#### 已納入管理的配置
+
+```bash
+# Kitty 終端模擬器
+ln -sf ~/.config/dotfile/kitty ~/.config/kitty
+
+# Hyprland 視窗管理器
+ln -sf ~/.config/dotfile/hypr ~/.config/hypr
+
+# Waybar 狀態列
+ln -sf ~/.config/dotfile/waybar ~/.config/waybar
+
+# Fcitx5 輸入法
+ln -sf ~/.config/dotfile/fcitx5 ~/.config/fcitx5
+
+# Walker 應用啟動器
+ln -sf ~/.config/dotfile/walker ~/.config/walker
+
+# Starship prompt (如果尚未建立)
+ln -sf ~/.config/dotfile/starship.toml ~/.config/starship.toml
+```
+
+**注意事項**:
+- `hypr/.claude/` 和各配置中的 `CLAUDE.md` 為本機特定檔案，不會納入版本控制
+- `fcitx5/conf/cached_layouts` 為快取檔案，會自動生成
+- 建立符號連結前請先備份現有配置
+
 ### usage
 
 > NOTE: BACKUP all of those files before `ln` command

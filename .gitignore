@@ -1,2 +1,13 @@
 lazy-lock.json
 .aider*
+
+# Claude Code 本機設定檔案
+hypr/.claude/
+*/CLAUDE.md
+
+# Fcitx5 快取檔案
+fcitx5/conf/cached_layouts
+
+# 敏感配置（完全排除）
+atuin/
+gh/
