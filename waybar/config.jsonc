@@ -6,7 +6,7 @@
   "height": 26,
   "modules-left": ["custom/omarchy", "hyprland/workspaces"],
   "modules-center": [
-    "clock",
+    "hyprland/window",
     "custom/update",
     "custom/screenrecording-indicator",
   ],
@@ -16,7 +16,8 @@
     "network",
     "pulseaudio",
     "cpu",
-    "battery",
+    "memory",
+    "clock",
   ],
   "hyprland/workspaces": {
     "on-click": "activate",
@@ -45,7 +46,7 @@
   "custom/omarchy": {
     "format": "<span font='omarchy'>\ue900</span>",
     "on-click": "omarchy-menu",
-    "on-click-right": "omarchy-launch-terminal",
+    "on-click-right": "xdg-terminal-exec",
     "tooltip-format": "Omarchy Menu\n\nSuper + Alt + Space",
   },
   "custom/update": {
@@ -59,8 +60,14 @@
 
   "cpu": {
     "interval": 5,
-    "format": "󰍛",
-    "on-click": "$TERMINAL -e btop",
+    "format": "󰍛 {usage}%",
+    "on-click": "xdg-terminal-exec btop",
+  },
+  "memory": {
+    "interval": 5,
+    "format": "  {percentage}%",
+    "tooltip-format": "{used:0.1f}GiB / {total:0.1f}GiB",
+    "on-click": "xdg-terminal-exec btop",
   },
   "clock": {
     "format": "{:L%A %H:%M}",
@@ -71,8 +78,8 @@
   "network": {
     "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
     "format": "{icon}",
-    "format-wifi": "{icon}",
-    "format-ethernet": "󰀂",
+    "format-wifi": "{icon} ⇣{bandwidthDownBytes} ⇡{bandwidthUpBytes}",
+    "format-ethernet": "󰀂 ⇣{bandwidthDownBytes} ⇡{bandwidthUpBytes}",
     "format-disconnected": "󰤮",
     "tooltip-format-wifi": "{essid} ({frequency} GHz)\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
     "tooltip-format-ethernet": "⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
@@ -108,13 +115,20 @@
     "on-click": "blueberry",
   },
   "pulseaudio": {
-    "format": "{icon}",
-    "on-click": "$TERMINAL --class=Wiremix -e wiremix",
+    "format": "{icon} {volume}%",
+    "on-click": "xdg-terminal-exec --app-id=com.omarchy.Wiremix -e wiremix",
     "on-click-right": "pamixer -t",
     "tooltip-format": "Playing at {volume}%",
     "scroll-step": 5,
-    "format-muted": "",
+    "format-muted": " {volume}%",
     "format-icons": {
+      "headphones": "🎵",
+      "JAZZ UB720 Analog Stereo": "💬",
+      "handsfree": "📞",
+      "headset": "💬",
+      "phone": "",
+      "portable": "",
+      "car": "",
       "default": ["", "", ""],
     },
   },
@@ -139,5 +153,9 @@
   "tray": {
     "icon-size": 12,
     "spacing": 17,
+  },
+  "hyprland/window": {
+    "format": "󰄛 ~ {initialTitle}",
+    "max-length": 50,
   },
 }
