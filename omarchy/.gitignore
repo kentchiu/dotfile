@@ -1,0 +1,10 @@
+# macOS
+.DS_Store
+
+# Vim
+*.swp
+*.swo
+*~
+
+# Backup files
+*.bak

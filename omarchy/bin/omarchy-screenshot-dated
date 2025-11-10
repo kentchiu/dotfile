@@ -1,0 +1,21 @@
+#!/bin/bash
+# Wrapper for omarchy-cmd-screenshot
+# Purpose: Save screenshots in date-based subdirectories (MMDD format)
+# Created: 2025-11-01
+
+# Build date-based directory path
+BASE_DIR="${OMARCHY_SCREENSHOT_DIR:-${XDG_PICTURES_DIR:-$HOME/Pictures}}"
+DATE_DIR="$BASE_DIR/$(date +'%m%d')"
+
+# Create directory if it doesn't exist
+if [[ ! -d "$DATE_DIR" ]]; then
+  mkdir -p "$DATE_DIR"
+  if [[ $? -ne 0 ]]; then
+    notify-send "截圖目錄建立失敗: $DATE_DIR" -u critical -t 3000
+    exit 1
+  fi
+fi
+
+# Call original omarchy script with date directory
+OMARCHY_SCREENSHOT_DIR="$DATE_DIR" \
+  /home/kent/.local/share/omarchy/bin/omarchy-cmd-screenshot "$@"

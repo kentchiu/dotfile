@@ -12,8 +12,9 @@ ModifierOnlyKeyTimeout=250
 
 [Hotkey/TriggerKeys]
 0=Control+space
-1=Zenkaku_Hankaku
-2=Hangul
+1=Shift_L
+2=Zenkaku_Hankaku
+3=Hangul
 
 [Hotkey/ActivateKeys]
 0=Hangul_Hanja
@@ -22,7 +23,6 @@ ModifierOnlyKeyTimeout=250
 0=Hangul_Romaja
 
 [Hotkey/AltTriggerKeys]
-0=Multi_key
 
 [Hotkey/EnumerateGroupForwardKeys]
 0=Super+space
@@ -47,11 +47,11 @@ ModifierOnlyKeyTimeout=250
 
 [Behavior]
 # Active By Default
-ActiveByDefault=True
+ActiveByDefault=False
 # Reset state on Focus In
 resetStateWhenFocusIn=No
 # Share Input State
-ShareInputState=Program
+ShareInputState=No
 # Show preedit in application
 PreeditEnabledByDefault=True
 # Show Input Method Information when switch input method
