@@ -1,6 +1,8 @@
 [Hotkey]
 # Enumerate when holding modifier of Toggle key
 EnumerateWithTriggerKeys=True
+# Temporarily Toggle Input Method
+AltTriggerKeys=
 # Enumerate Input Method Forward
 EnumerateForwardKeys=
 # Enumerate Input Method Backward
@@ -21,8 +23,6 @@ ModifierOnlyKeyTimeout=250
 
 [Hotkey/DeactivateKeys]
 0=Hangul_Romaja
-
-[Hotkey/AltTriggerKeys]
 
 [Hotkey/EnumerateGroupForwardKeys]
 0=Super+space

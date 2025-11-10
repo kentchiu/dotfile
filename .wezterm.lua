@@ -182,6 +182,9 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_wid
 	return __cells__
 end)
 
+-- 設定正確的 TERM 變數以確保與 tmux 良好整合
+config.term = "xterm-256color"
+
 -- 平台特定配置
 if wezterm.target_triple == "x86_64-pc-windows-msvc" then
 	-- Windows 平台特定配置
