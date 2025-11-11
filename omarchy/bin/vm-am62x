@@ -1,0 +1,3 @@
+#!/bin/bash
+# Start VirtualBox VM "vm62x" (AM62x) in headless mode (without GUI)
+VBoxManage startvm "vm62x" --type headless

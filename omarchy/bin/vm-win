@@ -1,0 +1,3 @@
+#!/bin/bash
+# Start VirtualBox VM "win" with detachable GUI
+VBoxManage startvm "win" --type separate
