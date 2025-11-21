@@ -31,7 +31,28 @@ vim.opt.diffopt = {
   -- "iwhite", -- this one, it doesn't fit all cases.
 }
 
--- SSH remote copy support using OSC 52
--- https://github.com/neovim/neovim/pull/33021
-vim.g.clipboard = "osc52"
-vim.opt.clipboard = "unnamedplus" -- use system clipboard for all yank/paste operations
+-- Clipboard configuration with environment detection
+if vim.fn.has("wsl") == 1 then
+  -- WSL: use win32yank.exe
+  vim.g.clipboard = {
+    name = "win32yank-wsl",
+    copy = {
+      ["+"] = "win32yank.exe -i --crlf",
+      ["*"] = "win32yank.exe -i --crlf",
+    },
+    paste = {
+      ["+"] = "win32yank.exe -o --lf",
+      ["*"] = "win32yank.exe -o --lf",
+    },
+    cache_enabled = 0,
+  }
+elseif vim.env.SSH_CONNECTION ~= nil then
+  -- SSH remote: use OSC 52
+  -- https://github.com/neovim/neovim/pull/33021
+  vim.g.clipboard = "osc52"
+  vim.opt.clipboard = "unnamedplus"
+else
+  -- Local: use system clipboard (auto-detect wl-clipboard/xclip/xsel)
+  vim.opt.clipboard = "unnamedplus"
+  -- Don't set vim.g.clipboard, let Neovim auto-detect the best provider
+end
