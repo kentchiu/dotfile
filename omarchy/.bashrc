@@ -66,3 +66,6 @@ esac
 # 可以使用 Ctrl+R 來搜尋 history
 eval "$(atuin init bash --disable-up-arrow)"
 ## ATUIN END
+
+# uv
+export PATH="/home/kent/.local/share/../bin:$PATH"
