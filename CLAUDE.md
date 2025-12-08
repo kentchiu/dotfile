@@ -56,6 +56,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 #### 重要插件模組 (nvim/lua/config/lazy.lua)
 
 已啟用的 LazyVim extras:
+
 - `coding.mini-surround` - 括號/引號快速編輯
 - `editor.harpoon2` - 快速檔案導航
 - `editor.mini-diff` - Git diff 整合
@@ -65,6 +66,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - `ui.mini-indentscope` - 縮排視覺化
 
 自訂插件:
+
 - `debugprint.lua` - 除錯輸出工具
 - `snacks.lua` - 多功能 UI 增強
 
@@ -181,9 +183,9 @@ cd = z            # zoxide 智能目錄跳轉
   - `config.jsonc` - 主配置
   - `style.css` - 樣式表
 
-#### Kitty (終端模擬器)
+#### Ghostty (終端模擬器)
 
-- **配置檔案**: `kitty.conf`
+- **配置檔案**: `~./dotfile/ghostty/config`
 - **特點**: 跨平台終端模擬器配置
 
 #### Fcitx5 (輸入法框架)
@@ -248,6 +250,7 @@ ln -sf ~/.config/dotfile/starship.toml ~/.config/starship.toml
 ### 平台相依套件
 
 **Arch Linux**:
+
 ```bash
 # 必要套件
 sudo pacman -S wget net-tools htop tree gdu less bat exa vim zoxide
@@ -260,6 +263,7 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ```
 
 **Ubuntu**:
+
 ```bash
 # 參考 ubuntu_dotfile_guide.md
 # Neovim 需要從官方下載 >= 0.11 版本
@@ -269,6 +273,7 @@ sudo ln -sf /opt/nvim-linux-x86_64/bin/nvim /usr/local/bin/nvim
 ```
 
 **macOS**:
+
 ```bash
 brew install tmux neovim ripgrep fd fzf git lazygit git-delta
 brew install exa bat zoxide
