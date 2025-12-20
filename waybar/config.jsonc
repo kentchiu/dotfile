@@ -71,7 +71,8 @@
     "on-click": "omarchy-launch-or-focus-tui btop",
   },
   "clock": {
-    "format": "{:L%A %H:%M}",
+    "interval": 1,
+    "format": "{:%m/%d %H:%M:%S}",
     "format-alt": "{:L%d %B W%V %Y}",
     "tooltip": false,
     "on-click-right": "omarchy-launch-floating-terminal-with-presentation omarchy-tz-select",
@@ -157,7 +158,7 @@
     "spacing": 17,
   },
   "hyprland/window": {
-    "format": "󰄛 ~ {initialTitle}",
+    "format": "󰊠 ~ {initialTitle}",
     "max-length": 50,
   },
 }
