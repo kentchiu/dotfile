@@ -32,6 +32,9 @@ alias vi='nvim'
 # SSH 連線時使用 xterm-256color 確保顏色正常顯示
 alias ssh='TERM=xterm-256color ssh'
 
+## most used claude code command
+alias cc='claude --dangerously-skip-permissions'
+
 # ----------------------------------------------------------------------------
 # 4. 客製化 Omarchy Scripts 的 PATH 設定
 # ----------------------------------------------------------------------------
