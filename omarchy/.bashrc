@@ -34,6 +34,8 @@ alias ssh='TERM=xterm-256color ssh'
 
 ## most used claude code command
 alias cc='claude --dangerously-skip-permissions'
+##  claude commit
+alias ci='git add . && claude /git:commit --dangerously-skip-permissions'
 
 # ----------------------------------------------------------------------------
 # 4. 客製化 Omarchy Scripts 的 PATH 設定
