@@ -35,7 +35,7 @@ alias ssh='TERM=xterm-256color ssh'
 ## most used claude code command
 alias cc='claude --dangerously-skip-permissions'
 ##  claude commit
-alias ci='git add . && claude /git:commit --dangerously-skip-permissions'
+alias ccc='git add . && claude /git:commit --dangerously-skip-permissions'
 
 # ----------------------------------------------------------------------------
 # 4. 客製化 Omarchy Scripts 的 PATH 設定
@@ -44,15 +44,14 @@ alias ci='git add . && claude /git:commit --dangerously-skip-permissions'
 # 這樣可以覆寫 ~/.local/share/omarchy/bin 中的官方 scripts
 # 使用 case 語句避免重複加入（當 source .bashrc 多次時）
 case ":${PATH}:" in
-    *:"$HOME/.config/dotfile/omarchy/bin":*)
-        # 已經在 PATH 中，不重複加入
-        ;;
-    *)
-        # 加入到 PATH 最前面，確保優先順序
-        export PATH="$HOME/.config/dotfile/omarchy/bin:$PATH"
-        ;;
+*:"$HOME/.config/dotfile/omarchy/bin":*)
+  # 已經在 PATH 中，不重複加入
+  ;;
+*)
+  # 加入到 PATH 最前面，確保優先順序
+  export PATH="$HOME/.config/dotfile/omarchy/bin:$PATH"
+  ;;
 esac
-
 
 # ----------------------------------------------------------------------------
 # 5. Atuin - Shell History 管理工具
