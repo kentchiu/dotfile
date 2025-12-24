@@ -1,0 +1,37 @@
+#!/bin/bash
+# mermaid-preview: 從選取文字或剪貼簿讀取 Mermaid 語法並預覽
+# Usage: mermaid-preview
+
+set -e
+
+# 確保 mise 環境
+eval "$(~/.local/bin/mise activate bash 2>/dev/null)" || true
+
+# 暫存檔案
+TMP_DIR="/tmp/mermaid-preview"
+mkdir -p "$TMP_DIR"
+INPUT_FILE="$TMP_DIR/input.mmd"
+OUTPUT_FILE="$TMP_DIR/output.png"
+
+# 優先讀取選取的文字 (primary selection)，否則讀取剪貼簿
+CONTENT=$(wl-paste -p 2>/dev/null || true)
+if [ -z "$CONTENT" ]; then
+    CONTENT=$(wl-paste -t text/plain 2>/dev/null || true)
+fi
+
+if [ -z "$CONTENT" ]; then
+    notify-send "Mermaid Preview" "請先選取 Mermaid 語法" -u warning
+    exit 1
+fi
+
+# 寫入暫存檔案
+echo "$CONTENT" > "$INPUT_FILE"
+
+# 渲染
+if ! mmdc -i "$INPUT_FILE" -o "$OUTPUT_FILE" -b white 2>/dev/null; then
+    notify-send "Mermaid Preview" "渲染失敗，請檢查語法" -u critical
+    exit 1
+fi
+
+# 顯示
+imv "$OUTPUT_FILE" &
