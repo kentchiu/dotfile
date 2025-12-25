@@ -28,8 +28,11 @@ fi
 echo "$CONTENT" > "$INPUT_FILE"
 
 # 渲染
-if ! mmdc -i "$INPUT_FILE" -o "$OUTPUT_FILE" -b white 2>/dev/null; then
-    notify-send "Mermaid Preview" "渲染失敗，請檢查語法" -u critical
+ERROR_FILE="$TMP_DIR/error.log"
+if ! mmdc -i "$INPUT_FILE" -o "$OUTPUT_FILE" -b white 2>"$ERROR_FILE"; then
+    # 擷取錯誤訊息的關鍵行
+    ERROR_MSG=$(grep -m1 "^Error:" "$ERROR_FILE" 2>/dev/null || head -5 "$ERROR_FILE")
+    notify-send "Mermaid Preview" "渲染失敗:\n$ERROR_MSG" -u critical
     exit 1
 fi
 
