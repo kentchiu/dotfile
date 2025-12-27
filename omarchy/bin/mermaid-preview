@@ -13,9 +13,12 @@ mkdir -p "$TMP_DIR"
 INPUT_FILE="$TMP_DIR/input.mmd"
 OUTPUT_FILE="$TMP_DIR/output.png"
 
-# 優先讀取選取的文字 (primary selection)，否則讀取剪貼簿
+# 優先讀取 primary selection，同步到 clipboard
 CONTENT=$(wl-paste -p 2>/dev/null || true)
-if [ -z "$CONTENT" ]; then
+if [ -n "$CONTENT" ]; then
+    echo "$CONTENT" | wl-copy
+else
+    # primary selection 為空時讀取 clipboard
     CONTENT=$(wl-paste -t text/plain 2>/dev/null || true)
 fi
 
@@ -24,12 +27,19 @@ if [ -z "$CONTENT" ]; then
     exit 1
 fi
 
+# 移除共同的前導空格 (dedent)
+INDENT=$(echo "$CONTENT" | grep -v '^$' | sed 's/[^ ].*//' | sort | head -1 | wc -c)
+INDENT=$((INDENT - 1))
+if [ "$INDENT" -gt 0 ]; then
+    CONTENT=$(echo "$CONTENT" | sed "s/^ \{1,$INDENT\}//")
+fi
+
 # 寫入暫存檔案
 echo "$CONTENT" > "$INPUT_FILE"
 
 # 渲染
 ERROR_FILE="$TMP_DIR/error.log"
-if ! mmdc -i "$INPUT_FILE" -o "$OUTPUT_FILE" -b white 2>"$ERROR_FILE"; then
+if ! mmdc -i "$INPUT_FILE" -o "$OUTPUT_FILE" -b white -s 3 2>"$ERROR_FILE"; then
     # 擷取錯誤訊息的關鍵行
     ERROR_MSG=$(grep -m1 "^Error:" "$ERROR_FILE" 2>/dev/null || head -5 "$ERROR_FILE")
     notify-send "Mermaid Preview" "渲染失敗:\n$ERROR_MSG" -u critical
